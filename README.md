@@ -14,4 +14,4 @@ furniture of any brand, new or used, to ease the experience of purchasing furnit
 
 
 # License
-[MIT](https://chosealicense.com/license/mit/)
+[MIT]
