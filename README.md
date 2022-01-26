@@ -2,6 +2,7 @@
 Repo for eCommerce Project
 # Project Name:
 ## FurnitureLand
+The furniture market is evolving as demographics shift and consumers’ buying habits change. No furniture seller can afford to have a poor marketing strategy.Hence, with our application, users will be able to buy and sell furniture in a no time.
 
 ## Idea
 Marketplace for furniture -> Amazon style but exclusively for furniture and home appliances
