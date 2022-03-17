@@ -1,12 +1,11 @@
 <?php
-namespace app\core;
+	namespace app\core;
 
-class Model{
+		class Model{
 
-	protected static $_connection;
-	//connect to the database
-	function __construct(){
-		self::$_connection = DBConnection::getInstance();
-	}
+			protected static $_connection;
 
-}
+			function __construct() {
+				self::$_connection = DBConnection::getInstance();
+			}
+		}
