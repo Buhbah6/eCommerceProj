@@ -1,6 +1,5 @@
 <?php
     namespace app\controllers;
-   
         class User extends \app\core\Controller {
 
             function login() { 
@@ -40,10 +39,30 @@
                         $this->view('User/register','The user account with that username already exists.');
                 }
             }
+
+            
         
             #[\app\filters\Login]
             function logout() {
                 session_destroy();//deletes the session ID and all data
                 header('location:/User/login');
             }
+
+            function update(){
+                $user = new \app\models\User();
+                $user= $user->get($_SESSION['user_id']);//get the specific animal
+                //TODO: check if the animal exists
+                if(!isset($_POST['action'])){
+                    //show the view
+                    $this->view('User/profile', $user);
+                }else{
+                    $user->username=$_POST['username'];
+                    $user->email=$_POST['email'];
+                    $user->contact=$_POST['contact'];
+                    $user->update();
+                    header('location:/Home/index');
+                }
+            }
         }
+
+        

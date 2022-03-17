@@ -10,6 +10,11 @@
         <div class='container'>
             <h1>Furniture Land</h1>
             <?php
+                if (isset($_SESSION['user_id'])) {
+                    echo "<li><a href='/User/profile'>Profile</a></li>";
+                }
+            ?>            
+            <?php
                 $this->view('Subviews/navigation');
             ?>
         </div>

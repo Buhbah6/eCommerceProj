@@ -15,7 +15,7 @@
 			<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br>
 			<label class='form-label'>Password confirmation:<input type='password' name='password_confirm' class='form-control' /></label><br><br>
 			<label class='form-label'>Email:<input type='email' name='email' class='form-control' /></label><br>
-			<label class='form-label'>Phone Number:<input type='number' name='contact' class='form-control' /></label><br>
+			<label class='form-label'>Phone Number:<input type='text' name='contact' class='form-control' /></label><br>
 			<input type="submit" name='action' value='Register!' class='form-control' />
 		</form>
 		Already have an account? <a href="/User/login">Login here.</a> <br>

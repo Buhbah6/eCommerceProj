@@ -40,4 +40,10 @@
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$_SESSION['user_id']]);
             }
+
+            function update() {
+                $SQL = 'UPDATE user SET username = :username, email = :email, contact = :contact WHERE user_id = :user_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['email'=>$this->name,'email'=>$this->email,'contact'=>$this->contact,'user_id'=>$this->user_id]);
+            }
         }
