@@ -3,7 +3,7 @@
 	
 		class App {
 			
-			private $controller = 'Main';
+			private $controller = 'Home';
 			private $method = 'index';
 
 			public function __construct() {
