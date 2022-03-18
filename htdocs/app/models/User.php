@@ -23,7 +23,7 @@
                 return $STMT->fetch();
             }
 
-            function getUserProfile($user_id) { //get profile from user? question marrk>>>
+            function getUserProfile($user_id) { //get profile from user? question mark>>>
                 $SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$user_id]);

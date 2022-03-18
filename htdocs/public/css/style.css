@@ -1,0 +1,47 @@
+
+.products{
+    background: #3D9970;
+}
+h1#all{
+    Letter-spacing: 1px;
+    margin-left: 10px;
+    color: rgb(255, 248, 248);
+    text-shadow:
+    0 0 7px rgb(75, 72, 72),
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+    line-height: 1.5em;
+    text-indent: 2px;
+}
+b{
+    color: #0c7e1b;
+}
+.m-2#upd{
+    color: #7a6d1e;
+    text-decoration: none;
+    padding: 3.5px;
+    border-radius: 15px 50px;
+}
+
+.m-2#del{
+    text-decoration: none;
+    color: #960a0a;
+    padding: 3.5px;
+    border-radius: 50px 15px 50px 19px;
+    
+}
+#upd:hover{
+    background-color: #dad7cc;
+    color: black;
+}
+#del:hover{
+    background-color: rgb(241, 150, 150);
+    color: black;
+}
+
+
