@@ -45,6 +45,7 @@
                     $this->view('Product/update', $data);
                 }else{
                    $product = new \app\models\Product();
+                   $product->product_id = $product_id;
                    $product->product_name = $_POST['product_name'];
                    $product->available_quantity = $_POST['available_quantity'];
                    $product->price = $_POST['price'];
