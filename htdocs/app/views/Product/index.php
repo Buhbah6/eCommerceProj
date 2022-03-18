@@ -20,7 +20,12 @@
 			Price: $product->price <br>
 			Quantity: $$product->available_quantity <br>
 			Description: $product->description <br> <br>";
-		}
+
+			echo "<a href='/Product/update/$product->product_id' class='m-2'>Update</a>
+                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
+					class='m-2'>Delete</a> </div> </div>";
+                }
+	
         ?>
 		</div>
 	</body>
