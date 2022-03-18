@@ -1,6 +1,11 @@
 
 .container{
     text-align: center;
+    font-family: 'Trocchi', serif; font-weight: normal;  
+    
+}
+.container h1{
+    color: #292822; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; 
 }
 .home{
     text-shadow: center;
@@ -29,7 +34,7 @@
     right: -1px;
     transform: translate(-50%, -50%);
     background: #222325;
-    height: 50px;
+    height: 30px;
     border-radius: 40px;
     padding: 10px;
 }
