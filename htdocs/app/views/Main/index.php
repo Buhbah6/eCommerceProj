@@ -19,6 +19,10 @@
             <?php
                 $this->view('Subviews/navigation');
             ?>
+            <?php
+                $this->view('Subviews/search', $data);
+            ?>
+
         </div>
     </body>
 </html>
