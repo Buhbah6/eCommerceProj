@@ -1,9 +1,9 @@
 <?php
     namespace app\controllers;
 
-        class Home extends \app\core\Controller {
+        class Main extends \app\core\Controller {
 
             public function index() {
-                $this->view('Home/index');
+                $this->view('Main/index');
             }
         }

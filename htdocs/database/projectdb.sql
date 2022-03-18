@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2022 at 05:37 AM
+-- Generation Time: Mar 18, 2022 at 10:04 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -79,7 +79,7 @@ CREATE TABLE `product` (
   `category_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
   `available_quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` double NOT NULL,
   `description` text NOT NULL,
   `quality` tinyint(1) NOT NULL COMMENT ' 0 is new, 1 is somewhat used, 2 is very used'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,7 +124,7 @@ CREATE TABLE `sale` (
 --
 
 CREATE TABLE `seller` (
-  `seller _id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `type` tinyint(1) NOT NULL COMMENT '0 is independent, 1 is business',
   `name` varchar(40) NOT NULL,
@@ -135,9 +135,9 @@ CREATE TABLE `seller` (
 -- Dumping data for table `seller`
 --
 
-INSERT INTO `seller` (`seller _id`, `user_id`, `type`, `name`, `location`) VALUES
+INSERT INTO `seller` (`seller_id`, `user_id`, `type`, `name`, `location`) VALUES
 (1, 2, 0, 'first', ''),
-(2, 2, 1, 'something', '');
+(10, 3, 1, 'Sheesh.inc', 'Canada');
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) VALUES
 (1, 'Buhbah6', '$2y$10$RHKnzlsjhYqF8njJcKwxFOapU.vjwrC0kJkCz/ft2RT17wYItiel2', 'thegoldenrailway@gmail.com', 2147483647),
-(2, 'trial', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'trialdoll@69myass.com', 2147483647);
+(2, 'trial', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'trialdoll@69myass.com', 2147483647),
+(3, 'test', '$2y$10$HzFoBER5EXKzgedx8g5TQOBrT0WMvtuzmzfFViCi0jX0n4NDWshwi', 'test@gmail.com', 1234567891),
+(4, 'Anthony', '$2y$10$mmY4gH52O9tB/ndK44GOw.sDna425bs4jjDBoPSoeu/rz2vp882X6', 'honk@gmail.com', 1234567891);
 
 -- --------------------------------------------------------
 
@@ -229,7 +231,8 @@ ALTER TABLE `sale`
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD PRIMARY KEY (`seller _id`),
+  ADD PRIMARY KEY (`seller_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `user_to_seller` (`user_id`);
 
 --
@@ -290,13 +293,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `seller _id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -327,7 +330,7 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `category_to_product` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `seller_to_product` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller _id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `seller_to_product` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `review`
@@ -342,7 +345,7 @@ ALTER TABLE `review`
 ALTER TABLE `sale`
   ADD CONSTRAINT `buyer_to_sale` FOREIGN KEY (`buyer_id`) REFERENCES `buyer` (`buyer_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `product_to_sale` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `seller_to _sale` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller _id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `seller_to _sale` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `seller`

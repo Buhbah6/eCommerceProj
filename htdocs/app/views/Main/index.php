@@ -8,13 +8,13 @@
     </head>
     <body>
         <div class='container'>
-            <h1>Furniture Land</h1>
             <?php
-                if (isset($_SESSION['user_id'])) {
-                    echo "<li><a href='/User/profile'>Profile</a></li>";
-                    echo "<li><a href='/Product/index'>Products</a></li>";
-                }
-            ?>            
+                if (!isset($_SESSION['user_id']))
+                    echo "<a href='/User/login'>Login</a> | <a href='/User/register'>Register</a>";
+                else  
+                    echo "<a href='/User/index'>My Profile</a> | <a href='/User/logout'>Logout</a>";      
+            ?>
+            <h1>Furniture Land</h1>
             <?php
                 $this->view('Subviews/navigation');
             ?>
