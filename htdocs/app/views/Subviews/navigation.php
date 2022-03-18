@@ -2,8 +2,9 @@
 	<form method="post" action = "" style = "position:absolute;top:10px;right:100px;">
             <input type="text" name="search">
             <select name = "search_type">
-                <option value = "store">Search By Store</option>
-                <option value = "product">Search By Product</option>
+                <option value = "product_name">Search By Product Name</option>
+                <option value = "seller">Search By Seller</option>
+                <option value = "category">Search By category</option>
             </select>
             <button type="submit" name="action">Search</button>
         </form>

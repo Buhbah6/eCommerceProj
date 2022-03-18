@@ -12,6 +12,7 @@
             <?php
                 if (isset($_SESSION['user_id'])) {
                     echo "<li><a href='/User/profile'>Profile</a></li>";
+                    echo "<li><a href='/Product/index'>Products</a></li>";
                 }
             ?>            
             <?php
