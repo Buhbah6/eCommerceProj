@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2022 at 07:36 PM
+-- Generation Time: Mar 18, 2022 at 05:04 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -58,6 +58,15 @@ CREATE TABLE `category` (
   `decription` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `name`, `decription`) VALUES
+(1, '', ''),
+(2, 'beds', 'Item where people sleep.'),
+(3, 'chairs', 'Place where people sit.');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +75,7 @@ CREATE TABLE `category` (
 
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
   `category_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
   `available_quantity` int(11) NOT NULL,
@@ -73,6 +83,13 @@ CREATE TABLE `product` (
   `description` text NOT NULL,
   `quality` tinyint(1) NOT NULL COMMENT ' 0 is new, 1 is somewhat used, 2 is very used'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `category_id`, `seller_id`, `available_quantity`, `price`, `description`, `quality`) VALUES
+(2, 'Twin', 2, 1, 100, 35, '  Bed size', 1);
 
 -- --------------------------------------------------------
 
@@ -114,6 +131,14 @@ CREATE TABLE `seller` (
   `location` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `seller`
+--
+
+INSERT INTO `seller` (`seller _id`, `user_id`, `type`, `name`, `location`) VALUES
+(1, 2, 0, 'first', ''),
+(2, 2, 1, 'something', '');
+
 -- --------------------------------------------------------
 
 --
@@ -133,7 +158,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) VALUES
-(1, 'Buhbah6', '$2y$10$RHKnzlsjhYqF8njJcKwxFOapU.vjwrC0kJkCz/ft2RT17wYItiel2', 'thegoldenrailway@gmail.com', 2147483647);
+(1, 'Buhbah6', '$2y$10$RHKnzlsjhYqF8njJcKwxFOapU.vjwrC0kJkCz/ft2RT17wYItiel2', 'thegoldenrailway@gmail.com', 2147483647),
+(2, 'trial', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'trialdoll@69myass.com', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -240,13 +266,13 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -264,13 +290,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `seller _id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `seller _id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
