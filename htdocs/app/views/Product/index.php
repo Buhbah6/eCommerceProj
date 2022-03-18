@@ -10,10 +10,17 @@
 		<div class='container'>
 
 		<h1>All products</h1>
+
+		
 		<?php
-           foreach($data as $dat){
-               echo $dat->product_name;
-           }
+          foreach($data as $product){
+			echo "<div class='card m-2'>
+			<div class='card-body'>
+			<b>$product->product_name</b> <br>
+			Price: $product->price <br>
+			Quantity: $$product->available_quantity <br>
+			Description: $product->description <br> <br>";
+		}
         ?>
 		</div>
 	</body>

@@ -23,12 +23,10 @@
 			<label class='form-label'>Quality:</label>
             
 
-            <input class="form-check-input" type="radio" name="quality" value="0" ><label
-             class="form-check-label">New</label>
-             <input class="form-check-input" type="radio" name="quality" value="1" ><label
-             class="form-check-label">Somewhat used</label>
-             <input class="form-check-input" type="radio" name="quality" value="2" ><label
-             class="form-check-label">Very used</label> <br>
+            <label class='form-label'>Quality:</label>
+                <input class="form-check-input" type="radio" name="quality" value="0" <?= ($data[1]->quality == 0)? "checked" : "" ?> ><label class="form-check-label">New</label>
+                <input class="form-check-input" type="radio" name="quality" value="1" <?= ($data[1]->quality == 1)? "checked" : "" ?> ><label class="form-check-label">somewhat used</label>
+                <input class="form-check-input" type="radio" name="quality" value="2" <?= ($data[1]->quality == 2)? "checked" : "" ?> ><label class="form-check-label">very used </label> <br>
 
             <label class='form-label' >Choose a Category:</label>
             <?php
@@ -37,9 +35,14 @@
             ?>
             <select name="category_id" value='<?= $chooseCategory->name?>'>
             <?php
-                    foreach ($data as $category){
-                       echo "<option value=".$category->category_id."> ". $category->name."</option>"; 
+                   foreach ($data[0] as $category){
+                    if($category->category_id == $data[1]->category_id){
+                        echo "<option value='".$category->category_id."' selected>". $category->name ."</option>";
+
+                    } else {
+                        echo "<option value='".$category->category_id."'>". $category->name ."</option>";
                     }
+                }
             ?>
             </select>
 			<input type="submit" name='action' value='Create!' class='form-control' />
