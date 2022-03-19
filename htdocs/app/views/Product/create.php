@@ -31,6 +31,7 @@
                     foreach ($data as $category){
                        echo "<option value=".$category->category_id."> ". $category->name."</option>"; 
                     }
+
             ?>
             </select>
 			<input type="submit" name='action' value='Create!' class='form-control' />

@@ -45,7 +45,7 @@
                 }
             ?>
             </select>
-			<input type="submit" name='action' value='Create!' class='form-control' />
+			<input type="submit" name='action' value='Update!' class='form-control' />
 		</form>
 		</div>
 	</body>

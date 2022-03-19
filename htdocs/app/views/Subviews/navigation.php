@@ -4,7 +4,8 @@
 		<ul id='remove'><a class='home'href='/Main/index'>Home Page</a></ul>
 		<?php
 			if (isset($_SESSION['seller_id'])) {
-				echo "<li><a href='/Seller/index'>View Seller Profile</a></li>";
+				$id = $_SESSION['seller_id'];
+				echo "<li><a href='/Seller/index/$id'>View Seller Profile</a></li>";
 			}
 			else if (isset($_SESSION['user_id'])) {
 				echo "<li><a href='/Seller/create'>Create Seller Profile</a></li>";

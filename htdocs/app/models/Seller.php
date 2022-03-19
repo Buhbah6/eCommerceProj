@@ -55,4 +55,12 @@
             $STMT->execute(['user_id'=> $user_id]);
             return $STMT->fetch();
         }
+
+        function getAllProducts() {
+            $SQL = 'SELECT * FROM product WHERE seller_id = :seller_id';
+            $STMT = self::$_connection->prepare($SQL);
+            $STMT->execute(['seller_id'=>$this->seller_id]);
+            $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+            return $STMT->fetchAll();
+        }
     }

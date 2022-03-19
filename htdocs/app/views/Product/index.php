@@ -16,18 +16,23 @@
 
 		
 		<?php
-          foreach($data as $product){
-			echo "<div class='card m-2'>
-			<div class='card-body'>
-			<b>$product->product_name</b> <br>
-			Price: $product->price <br>
-			Quantity: $$product->available_quantity <br>
-			Description: $product->description <br> <br>";
+			$seller = new \app\models\Seller();	
+          	foreach($data as $product){
+	          	$currentSeller = $seller->get($product->seller_id);
+				echo "<div class='card m-2'>
+				<div class='card-body'>
+				<b>$product->product_name</b> <br>
+				Price: $$product->price <br>
+				Quantity: $product->available_quantity <br>
+				Description: $product->description <br>
+				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
 
-			echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>
-                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
-					class='m-2' id='del'>Delete</a> </div> </div>";
-                }
+				if (isset($_SESSION['seller_id']) && $product->seller_id == $_SESSION['seller_id']) {
+				echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>
+	                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
+						class='m-2' id='del'>Delete</a> </div> </div>";
+				}
+        }
 	
         ?>
 		</div>

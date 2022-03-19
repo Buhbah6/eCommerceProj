@@ -1,12 +1,11 @@
 <?php
     namespace app\controllers;
 
-        #[\app\filters\Login]
         class Seller extends \app\core\Controller {
 
-            public function index() { //shows profile page -> basic info, publication and comments subviews and modify button
+            public function index($seller_id) { //shows profile page -> basic info, publication and comments subviews and modify button
                 $seller = new \app\models\Seller();
-                $currentSeller = $seller->getByUserId($_SESSION['user_id']);
+                $currentSeller = $seller->get($seller_id);
                 $this->view('Seller/index', $currentSeller);
             }
 
@@ -23,7 +22,7 @@
                     $sellerProfile->insert();
                     $sellerProfile = $sellerProfile->getByUserId($_SESSION['user_id']);
                     $_SESSION['seller_id'] = $sellerProfile->seller_id;
-                    header('location:/Seller/index');
+                    header("location:/Seller/index/$sellerProfile->seller_id");
                 }
             }
 
@@ -37,7 +36,7 @@
                     $seller->name=$_POST['name'];
                     $seller->location=$_POST['location'];
                     $seller->update();
-                    header("location:/Seller/index");
+                    header("location:/Seller/index/$seller->seller_id");
                 }
             }
         }

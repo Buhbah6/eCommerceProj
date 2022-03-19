@@ -9,7 +9,7 @@
                 $this->view('Product/index', $product);
             }
 
-            public function create($seller_id) { //  remove the input after the seller is implemented
+            public function create() { //  remove the input after the seller is implemented
                 $categorys = new \app\models\Category();
                 $categorys = $categorys->getAll();
 
@@ -23,11 +23,10 @@
                    $newProduct->description = $_POST['description'];
                    $newProduct->quality = $_POST['quality'];
                    $newProduct->category_id = $_POST['category_id'];
-                   $_SESSION['seller_id'] = $seller_id; // need to to remove after the seller is implemented
                    $newProduct->seller_id = $_SESSION['seller_id']; // need to change later : need to be seller_id instead of user_id
 
                    $newProduct->insert();
-                   header('location:/Product/index');
+                   header("location:/Seller/index/$newProduct->seller_id");
 
                    
                 }
@@ -52,10 +51,9 @@
                    $product->description = $_POST['description'];
                    $product->quality = $_POST['quality'];
                    $product->category_id = $_POST['category_id'];
-                   
-
+                   $product->seller_id = $_SESSION['seller_id'];
                    $product->update(); 
-                   header('location:/Product/index');
+                   header("location:/Seller/index/$product->seller_id");
                 }
             }
 
@@ -64,7 +62,7 @@
                 $product = $product->get($product_id);
 
                 $product->delete(); 
-                header('location:/Product/index');
+                header("location:/Seller/index/$product->seller_id");
                 }
             }
         

@@ -15,8 +15,10 @@
                     echo "<a href='/User/index'>My Profile</a> | <a href='/User/logout'>Logout</a>";      
             ?>
             <h1>Furniture Land</h1>
+            <br><br>
             <?php
                 $this->view('Subviews/navigation');
+                $this->view('Product/index', $data);
             ?>
            
 
