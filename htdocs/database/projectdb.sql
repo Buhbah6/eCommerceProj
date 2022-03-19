@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2022 at 10:04 AM
+-- Generation Time: Mar 19, 2022 at 02:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -79,7 +79,7 @@ CREATE TABLE `product` (
   `category_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
   `available_quantity` int(11) NOT NULL,
-  `price` double NOT NULL,
+  `price` int(11) NOT NULL,
   `description` text NOT NULL,
   `quality` tinyint(1) NOT NULL COMMENT ' 0 is new, 1 is somewhat used, 2 is very used'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -89,7 +89,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `category_id`, `seller_id`, `available_quantity`, `price`, `description`, `quality`) VALUES
-(3, 'Twins', 2, 1, 160, 85, '  Bed size', 0);
+(3, 'Twins', 2, 1, 160, 85, '  Bed size', 0),
+(4, 'Queen Size', 2, 1, 20, 500, ' Biggest size ', 1);
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,7 @@ CREATE TABLE `seller` (
 
 INSERT INTO `seller` (`seller_id`, `user_id`, `type`, `name`, `location`) VALUES
 (1, 2, 0, 'first', ''),
-(10, 3, 1, 'Sheesh.inc', 'Canada');
+(2, 2, 1, 'something', '');
 
 -- --------------------------------------------------------
 
@@ -159,9 +160,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) VALUES
 (1, 'Buhbah6', '$2y$10$RHKnzlsjhYqF8njJcKwxFOapU.vjwrC0kJkCz/ft2RT17wYItiel2', 'thegoldenrailway@gmail.com', 2147483647),
-(2, 'trial', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'trialdoll@69myass.com', 2147483647),
-(3, 'test', '$2y$10$HzFoBER5EXKzgedx8g5TQOBrT0WMvtuzmzfFViCi0jX0n4NDWshwi', 'test@gmail.com', 1234567891),
-(4, 'Anthony', '$2y$10$mmY4gH52O9tB/ndK44GOw.sDna425bs4jjDBoPSoeu/rz2vp882X6', 'honk@gmail.com', 1234567891);
+(2, 'trial1', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'examplel@example.com', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -232,7 +231,6 @@ ALTER TABLE `sale`
 --
 ALTER TABLE `seller`
   ADD PRIMARY KEY (`seller_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `user_to_seller` (`user_id`);
 
 --
@@ -275,7 +273,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -293,13 +291,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

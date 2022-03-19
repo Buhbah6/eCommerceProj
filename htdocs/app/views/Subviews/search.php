@@ -7,12 +7,15 @@
     <title>Search Results</title>
 </head>
 <body>
+<div style = "position:absolute;top:100px;right:200px;">
     <ol>
         <?php
-        foreach($data as $product){
-            echo "<li><a href = '/Product/index/' ".$product->product_id.">" .$product->product_name."</a></li>";
-        }
+            if($data != null){
+                foreach($data as $product)
+                echo "<li><a href = '/Product/index/' ".$product->product_id.">" .$product->product_name."</a></li>";
+            }
         ?>
     </ol>
+</div>
 </body>
 </html>

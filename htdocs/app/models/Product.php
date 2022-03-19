@@ -57,20 +57,18 @@
                 $STMT->execute(['product_name'=>$this->product_name, 'category_id'=>$this->category_id, 'available_quantity'=>$this->available_quantity, 'price'=>$this->price, 'description'=>$this->product_description, 'quality'=>$this->quality, 'product_id' =>$this->product_id]);
             }
 
-            public function searchByTitle($titre){
-
-                $SQL = 'SELECT * FROM publication WHERE publication_title = :publication_title';
-                $statement = self::$_connection->prepare($SQL);
-                $statement->execute(['publication_title' => $titre]);
-                $statement->setFetchMode(\PDO::FETCH_CLASS, "app\models\Publication");
-                return $statement->fetchAll();
-        
+            public function searchBySeller($term){
+                $SQL = 'SELECT * FROM seller WHERE name LIKE :term';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['term'=>"%$term%"]);
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Seller");
+                return $STMT->fetchAll(); 
             }
             public function searchByName($term) { //for searches
                 $SQL = 'SELECT * FROM product WHERE product_name LIKE :term';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['term'=>"%$term%"]);
-                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Store");
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
                 return $STMT->fetchAll(); 
             }
         }
