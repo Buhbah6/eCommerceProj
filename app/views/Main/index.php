@@ -20,8 +20,6 @@
                 $this->view('Subviews/navigation');
                 $this->view('Product/index', $data);
             ?>
-           
-
         </div>
     </body>
 </html>

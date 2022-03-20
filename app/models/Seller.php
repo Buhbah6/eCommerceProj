@@ -43,7 +43,7 @@
             $STMT->execute(['name'=>$this->name, 'location'=>$this->location, 'seller_id'=>$this->seller_id]);
         }
 
-        function delete() { //change this cause we're only supposed to be able to delete an account not the profikle
+        function delete() {
             $SQL = 'DELETE FROM seller WHERE seller_id = :seller_id';
             $STMT = self::$_connection->prepare($SQL);
             $STMT->execute(['seller_id'=>$this->seller_id]);

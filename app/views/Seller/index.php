@@ -11,6 +11,8 @@
             <?php
                 if(isset($_SESSION['seller_id']) && $data->seller_id == $_SESSION['seller_id']) {
                     echo "<a href='/Seller/update'>Update Seller Information</a><br>";
+                    echo "<a href='/Seller/delete' onclick='return confirm(\"Are you sure?\");' 
+                        class='m-2' id='del'>Delete Seller Page and all Products</a><br>";
                     echo "<a href='/Product/create'>Add Product</a><br><br><br>";
                 }
                 echo "<h1>" . $data->name . "</h1>";

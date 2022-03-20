@@ -39,4 +39,17 @@
                     header("location:/Seller/index/$seller->seller_id");
                 }
             }
+
+            public function delete() {
+                $seller = new \app\models\Seller();
+                $seller = $seller->get($_SESSION['seller_id']);
+                $products = new \app\models\Product();
+                $products = $products->getAllBySeller($_SESSION['seller_id']);
+                foreach($products as $product) {
+                    $product->delete();
+                }
+                $seller->delete();
+                unset($_SESSION['seller_id']);
+                header("location:/Main/index");
+            }
         }
