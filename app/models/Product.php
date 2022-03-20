@@ -71,4 +71,20 @@
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
                 return $STMT->fetchAll(); 
             }
+
+            public function sortByPrice() { //for searches
+                $SQL = 'SELECT * FROM product Order By price asc';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+                return $STMT->fetchAll(); 
+            }
+
+            public function sortByNameAlphabetically() { 
+                $SQL = 'SELECT * FROM product Order By product_name asc';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+                return $STMT->fetchAll(); 
+            }
         }

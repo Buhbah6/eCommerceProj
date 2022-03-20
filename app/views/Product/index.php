@@ -14,6 +14,10 @@
 
 		<h1 id='all'>Products</h1>
 
+		<a href='/Product/sortByPrice' class='m-2' id='upd'>sort by Price</a>
+		<a href='/Product/sortByAlphabetically' class='m-2' id='upd'>sort by Alphabetically</a>
+
+
 		
 		<?php
 			$seller = new \app\models\Seller();	
@@ -25,7 +29,7 @@
 				Price: $$product->price <br>
 				Quantity: $product->available_quantity <br>
 				Description: $product->description <br>
-				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
+				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br> </div> </div>";
 
 				if (isset($_SESSION['seller_id']) && $product->seller_id == $_SESSION['seller_id']) {
 				echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>

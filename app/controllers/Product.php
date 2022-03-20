@@ -63,7 +63,21 @@
 
                 $product->delete(); 
                 header("location:/Seller/index/$product->seller_id");
-                }
             }
+
+            public function sortByPrice(){
+                $product = new \app\models\Product();
+                $product = $product->sortByPrice();
+
+                $this->view('Product/index', $product);
+            }
+
+            public function sortByNameAlphabetically(){
+                $product = new \app\models\Product();
+                $product = $product->sortByNameAlphabetically();
+
+                $this->view('Product/index', $product);
+            }
+    }
         
     
