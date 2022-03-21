@@ -23,14 +23,6 @@
                 return $STMT->fetch();
             }
 
-            function getUserProfile($user_id) { //get profile from user? question mark>>>
-                $SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
-                $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$user_id]);
-                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Profile");
-                return $STMT->fetch();
-            }
-
             function exists() {
                 return $this->get($this->username) != false;
             }
@@ -45,11 +37,5 @@
                 $SQL = 'UPDATE user SET username = :username, email = :email, contact = :contact WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['username'=>$this->username, 'email'=>$this->email, 'contact'=>$this->contact, 'user_id'=>$this->user_id]);
-            }
-
-            function delete() {
-                $SQL = 'DELETE FROM user WHERE user_id = :user_id';
-                $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$_SESSION['user_id']]);
             }
         }

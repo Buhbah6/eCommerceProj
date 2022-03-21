@@ -15,7 +15,28 @@
                 return $STMT->fetch(); 
             }
 
-            public function getByUser($user_id) {
+            public function getProductInCart($product_id) {
+                $SQL = 'SELECT product_id FROM products_in_cart WHERE product_id = :product_id, cart_id = :cart_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['product_id'=>$product_id, 'cart_id'=>$_SESSION['cart_id']]);
+                return $STMT->fetch(); 
+            }
+
+            public function getAllProductsInCart($cart_id) {
+                $SQL = 'SELECT product_id FROM products_in_cart WHERE cart_id = :cart_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['cart_id'=>$cart_id]);
+                return $STMT->fetch(); 
+            }
+
+            public function getQuantityByProductId($product_id) {
+                $SQL = 'SELECT quantity FROM products_in_cart WHERE product_id = :product_id, cart_id = :cart_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['product_id'=>$product_id, 'cart_id'=>$_SESSION['cart_id']]);
+                return $STMT->fetch(); 
+            }
+
+            public function getByUserId($user_id) {
                 $SQL = 'SELECT * FROM cart WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$user_id]);
@@ -23,25 +44,29 @@
                 return $STMT->fetch(); 
             }
 
-            public function insert() { //fix this and subsequent calls
-                $SQL = 'INSERT INTO cart(user_id, product_id, quantity) 
-                VALUES(:user_id, :product_id, :quantity)';
+            public function insert() {
+                $SQL = 'INSERT INTO cart(user_id) 
+                VALUES(:user_id)';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$this->user_id, 'product_id'=>$this->product_id, 'quantity'=>$this->quantity]);
+                $STMT->execute(['user_id'=>$this->user_id]);
             }
-    /*
-            public function update() {
-                $SQL = 'UPDATE cart SET publication_title = :publication_title, publication_text = :publication_text, 
-                publication_status = :publication_status WHERE profile_id = :profile_id';
+
+            public function addToCart($product_id) {
+                $SQL = 'INSERT INTO products_in_cart(cart_id, product_id, quantity) 
+                VALUES(:cart_id, :product_id, :quantity)';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['publication_title'=>$this->publication_title, 'publication_text'=>$this->publication_text, 
-                'publication_status'=>$this->publication_status, 'profile_id'=>$this->profile_id]);
+                $STMT->execute(['cart_id'=>$_SESSION['cart_id'], 'product_id'=>$product_id, 'quantity'=>$quantity]);
             }
-    
-            public function delete($publication_id) {
-                $SQL = 'DELETE FROM publication WHERE publication_id = :publication_id';
+
+            public function removeFromCart($product_id) {
+                $SQL = 'DELETE FROM products_in_cart WHERE product_id = :product_id, cart_id = :cart_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['publication_id'=>$publication_id]);
+                $STMT->execute(['product_id'=>$product_id, 'cart_id'=>$_SESSION['cart_id']]);
             }
-            */
+
+            public function modifyQuantity($product_id, $quantity) {
+                $SQL = 'UPDATE products_in_cart SET quantity = :quantity WHERE product_id = :product_id, cart_id = :cart_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['quantity'=>$quantity, 'product_id'=>$product_id, 'cart_id'=>$_SESSION['cart_id']]);
+            }
         }

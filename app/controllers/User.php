@@ -21,7 +21,10 @@
                             $_SESSION['user_id'] = $user->user_id;
                             $sellerProfile = new \app\models\Seller();
                             $sellerProfile = $sellerProfile->getByUserId($user->user_id);
+                            $cart = new \app\models\Cart();
+                            $cart = $cart->getByUserId($user->user_id);
                             $_SESSION['seller_id'] = $sellerProfile->seller_id;
+                            $_SESSION['cart_id'] = $cart->cart_id;
                             header('location:/Main/index');
                         } 
                         else
@@ -46,6 +49,8 @@
                         $newUser = $newUser->getByUsername($newUser->username);
                         $_SESSION['user_id'] = $newUser->user_id;
                         $_SESSION['username'] = $newUser->username;
+                        $cart = new \app\controllers\Cart();
+                        $cart->create();
                         header('location:/Main/index');
                     }
                     else 

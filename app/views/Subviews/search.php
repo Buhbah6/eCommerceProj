@@ -10,9 +10,12 @@
 <div style = "position:absolute;top:100px;right:200px;">
     <ol>
         <?php
-            if($data != null){
+            if ($data != null && !isset($data[0]->product_id))
+                foreach($data as $seller)
+                echo "<li><a href = '/Seller/index/$seller->seller_id'>$seller->name</a></li>";
+            else if($data != null){
                 foreach($data as $product)
-                echo "<li><a href = '/Product/index/' ".$product->product_id.">" .$product->product_name."</a></li>";
+                echo "<li><a href = '/Product/index/$product->product_id'>$product->product_name</a></li>";
             }
         ?>
     </ol>
