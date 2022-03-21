@@ -28,13 +28,15 @@
 				<b>$product->product_name</b> <br>
 				Price: $$product->price <br>
 				Description: $product->description <br>
-				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br>
-				<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> <br> <br> </div> </div>";
+				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
 
 				if (isset($_SESSION['seller_id']) && $product->seller_id == $_SESSION['seller_id']) {
 				echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>
 	                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
 						class='m-2' id='del'>Delete</a> </div> </div>";
+				}
+				else {
+					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> <br> </div> </div>";
 				}
         }
         $this->view('Subviews/navigation');

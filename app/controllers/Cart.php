@@ -4,10 +4,16 @@
         #[\app\filters\Login]
         class Cart extends \app\core\Controller { 
 
-            public function index() { 
+            public function index() {
                 $cart = new \app\models\Cart();
-                $cart = $cart->get($_SESSION['cart_id']);
-                $this->view('Cart/index', $variable);
+                $ids = $cart->getAllProductsInCart();
+                $product = new \app\models\Product();
+                $products = [];
+                foreach ($ids as $id) {
+                    $product = $product->get($id[0]);
+                    $products[] = $product;
+                }
+                $this->view('Cart/index', $products);
             }
 
             public function create() {
@@ -20,26 +26,25 @@
 
             public function addToCart($product_id) {
                 $cart = new \app\models\Cart();
-                $quantity = $cart->getQuantityByProductId($product_id); + 1
-                if ($cart->getProductInCart($product_id)) {
-                    updateQuantity($product_id, $quantity)
+                if ($cart->getProductInCart($product_id) != null) {
+                    $quantity = $cart->getQuantityByProductId($product_id);
+                    $quantity = $quantity[0] + 1;
+                    $this->updateQuantity($product_id, $quantity);
                 }
                 else {
-                    $cart->addToCart($product_id, $quantity);
+                    $cart->addToCart($product_id);
                 }
-                $this->view('Cart/index', $variable) 
+                $this->index(); 
             }
 
             public function removeFromCart($product_id) {
                 $cart = new \app\models\Cart();
                 $cart->removeFromCart($product_id);
-                }
-                $this->view('Cart/index', $variable) 
+                $this->index(); 
             }
 
             public function updateQuantity($product_id, $quantity) {
                 $cart = new \app\models\Cart();
-                $cart->modifyQuantity($product_id, $quantity);
-                $this->view('Cart/index', $variable) 
+                $cart->modifyQuantity($product_id, $quantity);  
             }
         }
