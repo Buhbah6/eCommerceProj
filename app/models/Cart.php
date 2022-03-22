@@ -15,6 +15,14 @@
                 return $STMT->fetch(); 
             }
 
+            public function getByUserId($user_id) {
+                $SQL = 'SELECT * FROM cart WHERE user_id = :user_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['user_id'=>$user_id]);
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Cart");
+                return $STMT->fetch(); 
+            }
+
             public function getProductInCart($product_id) {
                 $SQL = 'SELECT product_id FROM products_in_cart WHERE product_id = :product_id AND cart_id = :cart_id';
                 $STMT = self::$_connection->prepare($SQL);

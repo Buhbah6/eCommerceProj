@@ -36,6 +36,7 @@
 						class='m-2' id='del'>Delete</a> </div> </div>";
 				}
 				else {
+					echo "<input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">";
 					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> <br> </div> </div>";
 				}
         }
