@@ -7,6 +7,6 @@ Feature: categorize
     Given I am on the product add page
     When I click on the "category" drop down menu
     And I click on "Appliances" from the list
-    The I see the category set as "Appliances"
+    Then I see the category set as "Appliances"
 
  

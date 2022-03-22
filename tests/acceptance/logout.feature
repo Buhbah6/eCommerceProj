@@ -4,6 +4,6 @@ Feature: logout
   I need to be able to click a button to log out
 
   Scenario: Log out of the website
-    Given I am on any page
-    When I click "Logout"
+    Given I am on my page
+    When I click on the link 
     Then I see the home page with the option to login
