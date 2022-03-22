@@ -11,7 +11,7 @@
 				echo "<a href='/Seller/create'>Create Seller Profile</a><br>";
 			}
 		?>
-		<a href='/Cart/index'>View Cart</a><br>
+		<a href='/Seller/list'>View All Sellers</a> | <a href='/Cart/index'>View Cart</a><br>
 	</div>
 	<?php
         $this->view('Search/search');

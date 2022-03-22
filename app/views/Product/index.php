@@ -12,35 +12,27 @@
 	<body>
 		<div class='products'>
 
-		<h1 id='all'>Products</h1>
-
-		<a href='/Product/sortByPrice' class='m-2' id='upd'>sort by Price</a>
-		<a href='/Product/sortByAlphabetically' class='m-2' id='upd'>sort by Alphabetically</a>
-
-
+		
 		
 		<?php
 			$seller = new \app\models\Seller();	
-          	foreach($data as $product){
-	          	$currentSeller = $seller->get($product->seller_id);
-				echo "<div class='card m-2'>
-				<div class='card-body'>
-				<b>$product->product_name</b> <br>
-				Price: $$product->price <br>
-				Description: $product->description <br>
-				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
+          	$seller = $seller->get($data->seller_id);
+			echo "<h1 id='all'>$data->product_name</h1>
+				<div class='card m-2'> <div class='card-body'>
+				Price: $$data->price <br>
+				Available Quantity: $data->available_quantity <br>
+				Description: $data->description <br>
+				Sold By: <a href='/Seller/index/$seller->seller_id'>$seller->name</a> <br> <br>";
 
-				if (isset($_SESSION['seller_id']) && $product->seller_id == $_SESSION['seller_id']) {
-				echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>
-	                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
+				if (isset($_SESSION['seller_id']) && $data->seller_id == $_SESSION['seller_id']) {
+				echo "<a href='/Product/update/$data->product_id' class='m-2' id='upd'>Update</a>
+	                    <a href='/Product/delete/$data->product_id' onclick='return confirm(\"Are you sure?\");' 
 						class='m-2' id='del'>Delete</a> </div> </div>";
 				}
 				else {
-					echo "<input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">";
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> <br> </div> </div>";
+					echo "<a href='/Cart/addToCart/$data->product_id'>Add to Cart</a> <br> </div> </div>";
 				}
-        }
-        $this->view('Subviews/navigation');
+        	$this->view('Subviews/navigation');
 	
         ?>
 		</div>

@@ -3,10 +3,16 @@
         #[\app\filters\Login]
         class Product extends \app\core\Controller {
 
-            public function index() {
+            public function index($product_id) {
+                $product = new \app\models\Product();
+                $product = $product->get($product_id);
+                $this->view('Product/index', $product);
+            }
+
+            public function list() {
                 $product = new \app\models\Product();
                 $product = $product->getAll();
-                $this->view('Product/index', $product);
+                $this->view('Product/list', $product);
             }
 
             public function create() { //  remove the input after the seller is implemented
@@ -69,14 +75,14 @@
                 $product = new \app\models\Product();
                 $product = $product->sortByPrice();
 
-                $this->view('Product/index', $product);
+                $this->view('Product/list', $product);
             }
 
             public function sortByNameAlphabetically(){
                 $product = new \app\models\Product();
                 $product = $product->sortByNameAlphabetically();
 
-                $this->view('Product/index', $product);
+                $this->view('Product/list', $product);
             }
     }
         

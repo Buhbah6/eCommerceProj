@@ -18,7 +18,7 @@
             <br><br>
             <?php
                 $this->view('Subviews/navigation');
-                $this->view('Product/index', $data);
+                $this->view('Product/list', $data);
             ?>
         </div>
     </body>

@@ -52,4 +52,10 @@
                 unset($_SESSION['seller_id']);
                 header("location:/Main/index");
             }
+
+            public function list() {
+                $sellerObj = new \app\models\Seller();
+                $sellers = $sellerObj->getAll();
+                $this->view('Seller/list', $sellers);
+            }
         }

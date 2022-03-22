@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 06:26 AM
+-- Generation Time: Mar 22, 2022 at 04:05 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -32,6 +32,15 @@ CREATE TABLE `cart` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -49,9 +58,16 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `name`, `decription`) VALUES
-(1, '', ''),
-(2, 'beds', 'Item where people sleep.'),
-(3, 'chairs', 'Place where people sit.');
+(1, 'Kitchen', 'Any and all items you\'d expect to find in a Kitchen'),
+(2, 'Living Room', 'Items such as Sofas, TVs, Electric Fireplaces, Coffee Tables, etc.'),
+(3, 'Kid\'s Bedroom', 'Beds, Desks, and other bedroom accessories for children'),
+(4, 'Bedroom', 'Beds, Desks, and other bedroom accessories'),
+(5, 'Bathroom', 'Curtains, Mirrors, and other furniture you\'d expect to find in a bathroom'),
+(6, 'Solarium', 'Plants, Curtains and Blinds, Room sets, heaters and air conditioners, and more.'),
+(7, 'Playroom', 'Child friendly tables and chairs, and other things fit perfectly '),
+(8, 'Garden', 'Outdoor fencing, plant holders, pots, and other Garden furniture... Even Gnomes'),
+(9, 'Dining Room', 'Dining tables and chairs, chandeliers, decorative shelving and curtains, and other Dining Room type furniture'),
+(10, 'Workshop', 'Large desks and counters, tool racks, storage cubbies and other storage options, and large scale tools.');
 
 -- --------------------------------------------------------
 
@@ -75,10 +91,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `category_id`, `seller_id`, `available_quantity`, `price`, `description`, `quality`) VALUES
-(3, 'Twins', 2, 1, 160, 85, '  Bed size', 0),
-(4, 'Queen Size', 2, 1, 20, 500, ' Biggest size ', 1),
-(11, 'test product', 2, 6, 17, 2147483647, '  sdahdfghjd', 1),
-(12, 'weed', 2, 8, 300, 7, '', 1);
+(1, 'Fridge', 1, 1, 5, 10, '  Refrigerator', 0),
+(2, 'Couch', 2, 1, 10, 15, '  Couch for Living Room', 1),
+(3, 'Garden Fence', 8, 2, 15, 20, '  Fence for the garden', 0),
+(4, 'Special Chandelier', 9, 2, 20, 25, '  Chandelier that is special', 2);
 
 -- --------------------------------------------------------
 
@@ -92,6 +108,20 @@ CREATE TABLE `products_in_cart` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products_in_cart`
+--
+
+INSERT INTO `products_in_cart` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
+(1, 2, 1, 1),
+(2, 2, 2, 1),
+(3, 1, 3, 1),
+(4, 1, 4, 1),
+(5, 3, 1, 1),
+(6, 3, 2, 1),
+(7, 3, 3, 1),
+(8, 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -152,12 +182,8 @@ CREATE TABLE `seller` (
 --
 
 INSERT INTO `seller` (`seller_id`, `user_id`, `type`, `name`, `location`) VALUES
-(1, 2, 0, 'first', ''),
-(2, 2, 1, 'something', ''),
-(4, 1, 1, 'sheesh', 'Canada'),
-(6, 4, 1, 'jerry', 'Sorel'),
-(7, 5, 1, 'sheesh', 'Canada'),
-(8, 6, 1, 'urmum', 'Sorel-Tracy');
+(1, 1, 0, 'Independent Business 1', 'Vanier College'),
+(2, 2, 1, 'Business Business 1', 'Sorel-Tracy');
 
 -- --------------------------------------------------------
 
@@ -178,12 +204,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) VALUES
-(1, 'Buhbah6', '$2y$10$RHKnzlsjhYqF8njJcKwxFOapU.vjwrC0kJkCz/ft2RT17wYItiel2', 'thegoldenrailway@gmail.com', '4505172737'),
-(2, 'trial1', '$2y$10$Jt9.TBegmLU2hey68.rPLeNl/p3xzDQZdW0asN6zNOPetxwXOZ0QW', 'examplel@example.com', '2147483647'),
-(3, 'test', '$2y$10$3UeHzc8o4jDzGzOgT3sD/uZculjwfhXErte9IVRvc3Qviv6ppBUuK', 'test@gmail.com', '1234567891'),
-(4, 'TonyNad', '$2y$10$ZweyK7YzZkr2cQxuML8eJexC5TNmx2.w0CsidEVxKsKcxYhqnJlBK', 'test@gmail.com', '1234567891'),
-(5, 'AnthonyNadeau', '$2y$10$j7P29CWutK0qPsUQH4PRLO6n0xUNtUWn8KtH4KTQSf22dBBSGfmwy', 'test@gmail.com', '1234567891'),
-(6, 'tarzan', '$2y$10$3bezUFBXXZ5k2rcFh31S0eW9jZdXqgbuzqzprTww4vALCcJE/fEuG', 'test@eCom.ca', '1234567891');
+(1, 'user1', '$2y$10$uxRowWTaz0cIStyYGykl/uB.LqIRbYCy./WAF8cYNJpzX2n.aL5I.', 'test@eCom.ca', '1234567891'),
+(2, 'user2', '$2y$10$.QTiMXqdLKZKXD9dPx1bKu9Dcv55r98Oowb21xZa1bQVjNnYBG0OS', 'test@gmail.com', '1234567891'),
+(3, 'user3', '$2y$10$iV60p7pLu2oEowW6vxodju/oCzsIE0vp1LWb1smSjgLVMVEr/lzSm', 'test@outlook.ca', '1234567891');
 
 -- --------------------------------------------------------
 
@@ -282,25 +305,25 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products_in_cart`
 --
 ALTER TABLE `products_in_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products_in_wishlist`
@@ -324,13 +347,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

@@ -29,7 +29,7 @@
                 if ($cart->getProductInCart($product_id) != null) {
                     $quantity = $cart->getQuantityByProductId($product_id);
                     $quantity = $quantity[0] + 1;
-                    $this->updateQuantity($product_id, $quantity);
+                    $this->modifyQuantity($product_id, $quantity);
                 }
                 else {
                     $cart->addToCart($product_id);
@@ -43,7 +43,7 @@
                 $this->index(); 
             }
 
-            public function updateQuantity($product_id, $quantity) {
+            public function modifyQuantity($product_id, $quantity) {
                 $cart = new \app\models\Cart();
                 $cart->modifyQuantity($product_id, $quantity);  
             }

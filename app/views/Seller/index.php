@@ -16,8 +16,7 @@
                     echo "<a href='/Product/create'>Add Product</a><br><br><br>";
                 }
                 echo "<h1>" . $data->name . "</h1>";
-                $this->view('Product/index', $data->getAllProducts());
-                $this->view('Subviews/navigation');
+                $this->view('Product/list', $data->getAllProducts());
             ?>
         </div>
     </body>
