@@ -4,16 +4,10 @@
         #[\app\filters\Login]
         class Wishlist extends \app\core\Controller { 
 
-            public function index() {
+            public function index($wishlist_id) {
                 $list = new \app\models\Wishlist();
-                $ids = $list->getAllProductsInWishlist();
-                $product = new \app\models\Product();
-                $products = [];
-                foreach ($ids as $id) {
-                    $product = $product->get($id[0]);
-                    $products[] = $product;
-                }
-                $this->view('Wishlist/index', $products);
+                $list = $list->get($wishlist_id);
+                $this->view('Wishlist/index', $list);
             }
 
             public function main() {
@@ -23,10 +17,17 @@
             }
 
             public function create() {
-                $list = new \app\models\Wishlist();
-                $list->user_id = $_SESSION['user_id'];
-                $list->insert();
-                $this->index();
+                if (!isset($_POST['action'])) {
+                    $this->view('Wishlist/create');
+                }
+                else {
+                    $list = new \app\models\Wishlist();
+                    $list->user_id = $_SESSION['user_id'];
+                    $list->name = $_POST['name'];
+                    $list->description = $_POST['description'];
+                    $list->insert();
+                    $this->main();
+                }
             }
 
             public function addToWishlist($product_id) {
@@ -39,17 +40,23 @@
                 else {
                     $list->addToWishlist($product_id);
                 }
-                $this->index(); 
+                $this->main(); 
             }
 
             public function removeFromWishlist($product_id) {
                 $list = new \app\models\Wishlist();
                 $list->removeFromCart($product_id);
-                $this->index(); 
+                $this->main();
             }
 
             public function modifyQuantity($product_id, $quantity) {
                 $list = new \app\models\Wishlist();
                 $list->modifyQuantity($product_id, $quantity);  
+            }
+
+            public function delete($wishlist_id) {
+                $list = new \app\models\Wishlist();
+                $list->delete($wishlist_id);
+                $this->main();
             }
         }

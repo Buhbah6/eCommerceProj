@@ -19,13 +19,14 @@
                 $SQL = 'SELECT * FROM wishlist';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute();
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Wishlist");
                 return $STMT->fetchAll(); 
             }
 
-            public function getByUserId($user_id) {
-                $SQL = 'SELECT * FROM wishlist WHERE user_id = :user_id';
+            public function getByName($name) {
+                $SQL = 'SELECT * FROM wishlist WHERE name = :name';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$user_id]);
+                $STMT->execute(['name'=>$name]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Wishlist");
                 return $STMT->fetch(); 
             }
@@ -37,10 +38,10 @@
                 return $STMT->fetch(); 
             }
 
-            public function getAllProductsInWishlist() {
+            public function getAllProductsInWishlist($wishlist_id) {
                 $SQL = 'SELECT product_id FROM products_in_wishlist WHERE wishlist_id = :wishlist_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['wishlist_id'=>$this->wishlist_id]);
+                $STMT->execute(['wishlist_id'=>$wishlist_id]);
                 return $STMT->fetchAll(); 
             }
 
@@ -74,5 +75,14 @@
                 $SQL = 'UPDATE products_in_wishlist SET quantity = :quantity WHERE product_id = :product_id AND wishlist_id = :wishlist_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['quantity'=>$quantity, 'product_id'=>$product_id, 'wishlist_id'=>$this->wishlist_id]);
+            }
+
+            public function delete($wishlist_id) {
+                $SQL = 'DELETE FROM products_in_wishlist WHERE wishlist_id = :wishlist_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['wishlist_id'=>$wishlist_id]);
+                $SQL = 'DELETE FROM wishlist WHERE wishlist_id = :wishlist_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['wishlist_id'=>$wishlist_id]);
             }
         }

@@ -10,8 +10,36 @@
             <title>All Products in Wishlist</title>
     </head>
     <body>
+        <?php
+            echo "<h1 id='all'>All Products in $data->name</h1>";
+        ?>
         <div>
-            
+            <?php
+                echo "<a href='/Wishlist/delete/$data->wishlist_id'>Delete Wishlist</a>";
+                $seller = new \app\models\Seller(); 
+                $ids = $data->getAllProductsInWishlist($data->wishlist_id);
+                $product = new \app\models\Product();
+                $products = [];
+                foreach ($ids as $id) {
+                    $product = $product->get($id[0]);
+                    $products[] = $product;
+                }
+
+                foreach($products as $product){
+                    $quantity = $data->getQuantityByProductId($product->product_id);
+                    $currentSeller = $seller->get($product->seller_id);
+                    echo "<div class='card m-2'>
+                    <div class='card-body'>
+                    <b>$product->product_name</b> <br>
+                    Price: $$product->price <br>
+                    Description: $product->description <br>
+                    Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br>
+                    Quantity in cart: $quantity[0] <br> <br>
+                    <a href='/Cart/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
+                    <a href='/Cart/removeFromCart/$product->product_id' class='m-2' id='del'>Remove From Cart</a> </div> </div>";
+                }
+                $this->view('Subviews/navigation');
+            ?>
         </div>
     </body>
 </html>

@@ -36,7 +36,7 @@
 						class='m-2' id='del'>Delete</a> </div> </div>";
 				}
 				else {
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> <br> </div> </div>";
+					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a> <br> </div> </div>";
 				}
         }
         $this->view('Subviews/navigation');

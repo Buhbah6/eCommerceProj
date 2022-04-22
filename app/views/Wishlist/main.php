@@ -20,6 +20,7 @@
                             echo "<li><a href=/Wishlist/index/$wishlist->wishlist_id>$wishlist->name</a></li><br>";
                         }
                     }
+                    $this->view('Subviews/navigation');
                 ?>
             </ul>
         </div>
