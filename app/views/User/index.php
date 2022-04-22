@@ -9,9 +9,10 @@
     <body>
         <div class='container'>
             <?php
-                echo "<a id='log'href='/User/update'>Update Account Information</a><br>";
+                echo "<a href='/User/logout'>Logout</a> &emsp; &emsp; &emsp; &emsp; <a id='log'href='/User/update'>Modify Account</a> | <a class='home'href='/Main/index'>Home Page</a><br>";
                 echo "<h1>Welcome " . $_SESSION['username'] . "</h1>";
                 $this->view('Subviews/navigation');
+                echo "<a href='/Wishlist/main'>Create/View Wishlists</a>"
             ?>
         </div>
     </body>

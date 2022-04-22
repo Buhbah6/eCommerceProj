@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 04:05 AM
+-- Generation Time: Apr 22, 2022 at 06:11 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -94,7 +94,7 @@ INSERT INTO `product` (`product_id`, `product_name`, `category_id`, `seller_id`,
 (1, 'Fridge', 1, 1, 5, 10, '  Refrigerator', 0),
 (2, 'Couch', 2, 1, 10, 15, '  Couch for Living Room', 1),
 (3, 'Garden Fence', 8, 2, 15, 20, '  Fence for the garden', 0),
-(4, 'Special Chandelier', 9, 2, 20, 25, '  Chandelier that is special', 2);
+(5, 'bed', 4, 1, 300, 15, '  Bed', 0);
 
 -- --------------------------------------------------------
 
@@ -116,12 +116,9 @@ CREATE TABLE `products_in_cart` (
 INSERT INTO `products_in_cart` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
 (1, 2, 1, 1),
 (2, 2, 2, 1),
-(3, 1, 3, 1),
-(4, 1, 4, 1),
 (5, 3, 1, 1),
 (6, 3, 2, 1),
-(7, 3, 3, 1),
-(8, 3, 4, 1);
+(7, 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -216,7 +213,9 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) 
 
 CREATE TABLE `wishlist` (
   `wishlist_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -317,13 +316,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products_in_cart`
 --
 ALTER TABLE `products_in_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products_in_wishlist`
