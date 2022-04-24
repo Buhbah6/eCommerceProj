@@ -20,7 +20,7 @@
 
 		
 		<?php
-			$seller = new \app\models\Seller();	
+			$seller = new \app\models\Seller();
           	foreach($data as $product){
 	          	$currentSeller = $seller->get($product->seller_id);
 				echo "<div class='card m-2'>
@@ -37,6 +37,10 @@
 				}
 				else {
 					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a> <br> </div> </div>";
+
+					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> </div> </div>";
+					// $reviews = new \app\models\Reviews();
+
 				}
         }
         $this->view('Subviews/navigation');
