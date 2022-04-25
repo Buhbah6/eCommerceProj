@@ -11,20 +11,26 @@
         <div class='container'>
             <?php
             $product_id = 0;
-                
-            foreach($data as $review) {
-                $user = $review->getUser($review->user_id);
-                $username = $user->username;
-                $text = $review->review_content;
-                $product_id = $review->product_id;
-                echo "<h4>$username:</h4> $text <br>";
-                if (isset($_SESSION['user_id']) && $user->user_id == $_SESSION['user_id'])
-                        echo "<a href='/Reviews/update/$review->review_id'>Modify</a> | 
-                        <a href='/Reviews/delete/$review->review_id'>Delete</a> <br><br>";
-            }
-                    echo "<a href='/Reviews/create/$product_id'>Add a review</a> <br><br>";
 
+            if(is_string($data)){
+                $product_id = $data;
+            }
+            else{
+                foreach($data as $review) {
+                    $user = $review->getUser($review->user_id);
+                    $username = $user->username;
+                    $text = $review->review_content;
+                    $product_id = $review->product_id;
+                    echo "<h4>$username:</h4> $text <br>";
+                    if (isset($_SESSION['user_id']) && $user->user_id == $_SESSION['user_id'])
+                            echo "<a href='/Reviews/update/$review->review_id'>Modify</a> | 
+                            <a href='/Reviews/delete/$review->review_id'>Delete</a> <br><br>";
+                }
+                        
+            }
+                echo "<a href='/Reviews/create/$product_id'>Add a review</a> <br><br>";
             ?>
+
 
         </div>
     </body>
