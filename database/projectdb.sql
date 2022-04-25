@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2022 at 07:19 AM
+-- Generation Time: Apr 25, 2022 at 10:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -28,8 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cache` (
-  `product_id` int(11) DEFAULT NULL
+  `cached_id` int(11) DEFAULT NULL,
+  `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`cached_id`, `type`) VALUES
+(16, 1);
 
 -- --------------------------------------------------------
 
@@ -128,7 +136,8 @@ INSERT INTO `products_in_cart` (`id`, `cart_id`, `product_id`, `quantity`) VALUE
 (2, 2, 2, 1),
 (5, 3, 1, 1),
 (6, 3, 2, 1),
-(7, 3, 3, 1);
+(7, 3, 3, 1),
+(11, 1, 3, 10);
 
 -- --------------------------------------------------------
 
@@ -148,7 +157,7 @@ CREATE TABLE `products_in_wishlist` (
 --
 
 INSERT INTO `products_in_wishlist` (`id`, `wishlist_id`, `product_id`, `quantity`) VALUES
-(25, 7, 3, 1);
+(61, 16, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -240,17 +249,12 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `name`, `description`) VALUES
-(7, 1, 'School', 'bvbnvbjvnjn');
+(16, 1, 'School', 'school stuff'),
+(17, 2, 'Test', 'Test');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cache`
---
-ALTER TABLE `cache`
-  ADD KEY `product_to_cache` (`product_id`);
 
 --
 -- Indexes for table `cart`
@@ -352,13 +356,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `products_in_cart`
 --
 ALTER TABLE `products_in_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products_in_wishlist`
 --
 ALTER TABLE `products_in_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -388,17 +392,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `cache`
---
-ALTER TABLE `cache`
-  ADD CONSTRAINT `product_to_cache` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cart`

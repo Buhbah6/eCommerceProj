@@ -23,6 +23,14 @@
                 return $STMT->fetchAll(); 
             }
 
+            public function getAllForUser($user_id) {
+                $SQL = 'SELECT * FROM wishlist WHERE user_id = :user_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['user_id'=>$user_id]);
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Wishlist");
+                return $STMT->fetchAll(); 
+            }
+
             public function getByName($name) {
                 $SQL = 'SELECT * FROM wishlist WHERE name = :name';
                 $STMT = self::$_connection->prepare($SQL);
@@ -45,10 +53,10 @@
                 return $STMT->fetchAll(); 
             }
 
-            public function getQuantityByProductId($product_id) {
+            public function getQuantityByProductId($product_id, $wishlist_id) {
                 $SQL = 'SELECT quantity FROM products_in_wishlist WHERE product_id = :product_id AND wishlist_id = :wishlist_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['product_id'=>$product_id, 'wishlist_id'=>$this->wishlist_id]);
+                $STMT->execute(['product_id'=>$product_id, 'wishlist_id'=>$wishlist_id]);
                 return $STMT->fetch(); 
             }
 
@@ -65,10 +73,10 @@
                 $STMT->execute(['wishlist_id'=>$this->wishlist_id, 'product_id'=>$product_id, 'quantity'=> 1]);
             }
 
-            public function removeFromWishlist($product_id) {
+            public function removeFromWishlist($product_id, $wishlist_id) {
                 $SQL = 'DELETE FROM products_in_wishlist WHERE product_id = :product_id AND wishlist_id = :wishlist_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['product_id'=>$product_id, 'wishlist_id'=>$this->wishlist_id]);
+                $STMT->execute(['product_id'=>$product_id, 'wishlist_id'=>$wishlist_id]);
             }
 
             public function modifyQuantity($product_id, $quantity, $wishlist_id) {
@@ -77,11 +85,11 @@
                 $STMT->execute(['quantity'=>$quantity, 'product_id'=>$product_id, 'wishlist_id'=>$wishlist_id]);
             }
 
-            public function addToCache($product_id) {
-                $SQL = 'INSERT INTO cache(product_id) 
-                VALUES(:product_id)';
+            public function addToCache($cached_id, $type) {
+                $SQL = 'INSERT INTO cache(cached_id, type) 
+                VALUES(:cached_id, :type)';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['product_id'=>$product_id]);
+                $STMT->execute(['cached_id'=>$cached_id, 'type'=>$type]);
             }
 
             public function clearCache() {

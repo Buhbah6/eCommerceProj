@@ -21,14 +21,16 @@
                 $seller = new \app\models\Seller(); 
                 $ids = $data->getAllProductsInWishlist($data->wishlist_id);
                 $product = new \app\models\Product();
-                $products = [];
+                $products = [];        
+                $list = new \app\models\Wishlist();
+                $list->addToCache($data->wishlist_id, 1);  
                 foreach ($ids as $id) {
                     $product = $product->get($id[0]);
                     $products[] = $product;
                 }
 
                 foreach($products as $product){
-                    $quantity = $data->getQuantityByProductId($product->product_id);
+                    $quantity = $data->getQuantityByProductId($product->product_id, $data->wishlist_id);
                     $currentSeller = $seller->get($product->seller_id);
                     echo "<div class='card m-2'>
                     <div class='card-body'>

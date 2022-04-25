@@ -37,7 +37,7 @@
 				}
 				else {
 					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a>  <br>";
-					echo "<a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a>| <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> 
+					echo "<a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a> | <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> 
 					</div> 
 					</div>";
 					// $reviews = new \app\models\Reviews();

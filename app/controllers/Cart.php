@@ -58,6 +58,9 @@
             public function modifyQtyModel($product_id, $quantity){
                 $cart = new \app\models\Cart();
                 $cart->modifyQuantity($product_id, $quantity); 
+            }
 
+            public function checkout() {
+                $this->view('Cart/checkout');
             }
         }

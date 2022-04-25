@@ -20,7 +20,7 @@
 
 				if (isset($_SESSION['seller_id']) && $data->seller_id == $_SESSION['seller_id']) {
 					echo "<a href='/Product/update/$data->product_id' class='m-2' id='upd'>Update</a>
-	                a href='/Product/delete/$data->product_id' onclick='return confirm(\"Are you sure?\");' 
+	                <a href='/Product/delete/$data->product_id' onclick='return confirm(\"Are you sure?\");' 
 					class='m-2' id='del'>Delete</a> 
 					</div> 
 					";
