@@ -71,10 +71,30 @@
                 $STMT->execute(['product_id'=>$product_id, 'wishlist_id'=>$this->wishlist_id]);
             }
 
-            public function modifyQuantity($product_id, $quantity) {
+            public function modifyQuantity($product_id, $quantity, $wishlist_id) {
                 $SQL = 'UPDATE products_in_wishlist SET quantity = :quantity WHERE product_id = :product_id AND wishlist_id = :wishlist_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['quantity'=>$quantity, 'product_id'=>$product_id, 'wishlist_id'=>$this->wishlist_id]);
+                $STMT->execute(['quantity'=>$quantity, 'product_id'=>$product_id, 'wishlist_id'=>$wishlist_id]);
+            }
+
+            public function addToCache($product_id) {
+                $SQL = 'INSERT INTO cache(product_id) 
+                VALUES(:product_id)';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['product_id'=>$product_id]);
+            }
+
+            public function clearCache() {
+                $SQL = 'DELETE FROM cache';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+            }
+
+            public function getFromCache() {
+                $SQL = 'SELECT * FROM cache';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+                return $STMT->fetch(); 
             }
 
             public function delete($wishlist_id) {

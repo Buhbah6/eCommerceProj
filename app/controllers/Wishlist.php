@@ -7,13 +7,27 @@
             public function index($wishlist_id) {
                 $list = new \app\models\Wishlist();
                 $list = $list->get($wishlist_id);
-                $this->view('Wishlist/index', $list);
+                if ($list->getFromCache() == null)
+                    $this->view('Wishlist/index', $list);
+                else {
+                    $product_id = $list->getFromCache()[0];
+                    $list->clearCache();
+                    $this->addToWishlist($product_id, $wishlist_id);
+                }
             }
 
             public function main() {
                 $list = new \app\models\Wishlist();
                 $allLists = $list->getAll();
                 $this->view('Wishlist/main', $allLists);
+            }
+
+            public function select($product_id) {
+                $list = new \app\models\Wishlist();
+                if ($list->getFromCache() != null)
+                    $list->clearCache();
+                $list->addToCache($product_id);
+                $this->main();
             }
 
             public function create() {
@@ -30,29 +44,30 @@
                 }
             }
 
-            public function addToWishlist($product_id) {
+            public function addToWishlist($product_id, $wishlist_id) {
                 $list = new \app\models\Wishlist();
+                $list->wishlist_id = $wishlist_id;
                 if ($list->getProductInWishlist($product_id) != null) {
                     var_dump($list);
                     $quantity = $list->getQuantityByProductId($product_id);
                     $quantity = $quantity[0] + 1;
-                    $this->modifyQuantity($product_id, $quantity);
+                    $this->modifyQuantity($product_id, $quantity, $wishlist_id);
                 }
                 else {
                     $list->addToWishlist($product_id);
                 }
-                $this->main(); 
+                $this->index($wishlist_id); 
             }
 
             public function removeFromWishlist($product_id) {
                 $list = new \app\models\Wishlist();
-                $list->removeFromCart($product_id);
+                $list->removeFromWishlist($product_id);
                 $this->main();
             }
 
-            public function modifyQuantity($product_id, $quantity) {
+            public function modifyQuantity($product_id, $quantity, $wishlist_id) {
                 $list = new \app\models\Wishlist();
-                $list->modifyQuantity($product_id, $quantity);  
+                $list->modifyQuantity($product_id, $quantity, $wishlist_id);  
             }
 
             public function delete($wishlist_id) {

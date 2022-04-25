@@ -16,13 +16,14 @@
 	        ?>
             <div>
             <h1>All Wishlists</h1>
-            <br><a href="/Wishlist/create">Create a new Wishlist</a><br>
+            <br><a href="/Wishlist/create">Create a new Wishlist</a><br><br>
             <ul>
                 <?php
                     if ($data != null) {
                         foreach($data as $wishlist){
-                            echo "<li><a href=/Wishlist/index/$wishlist->wishlist_id>$wishlist->name</a></li><br>";
+                            echo "<li><a href=/Wishlist/index/$wishlist->wishlist_id>$wishlist->name</a></li>";
                         }
+                        echo "<br><br>";
                     }
        
                 ?>

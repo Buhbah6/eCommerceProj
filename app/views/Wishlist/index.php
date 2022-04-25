@@ -36,9 +36,9 @@
                     Price: $$product->price <br>
                     Description: $product->description <br>
                     Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br>
-                    Quantity in cart: $quantity[0] <br> <br>
-                    <a href='/Cart/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
-                    <a href='/Cart/removeFromCart/$product->product_id' class='m-2' id='del'>Remove From Cart</a> </div> </div>";
+                    Quantity in Wishlist: $quantity[0] <br> <br>
+                    <a href='/Wishlist/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
+                    <a href='/Wishlist/removeFromWishlist/$product->product_id' class='m-2' id='del'>Remove From Wishlist</a> </div> </div>";
                 }
             ?>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2022 at 06:11 AM
+-- Generation Time: Apr 25, 2022 at 07:19 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `projectdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache`
+--
+
+CREATE TABLE `cache` (
+  `product_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -133,6 +143,13 @@ CREATE TABLE `products_in_wishlist` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `products_in_wishlist`
+--
+
+INSERT INTO `products_in_wishlist` (`id`, `wishlist_id`, `product_id`, `quantity`) VALUES
+(25, 7, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -219,8 +236,21 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `name`, `description`) VALUES
+(7, 1, 'School', 'bvbnvbjvnjn');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cache`
+--
+ALTER TABLE `cache`
+  ADD KEY `product_to_cache` (`product_id`);
 
 --
 -- Indexes for table `cart`
@@ -328,7 +358,7 @@ ALTER TABLE `products_in_cart`
 -- AUTO_INCREMENT for table `products_in_wishlist`
 --
 ALTER TABLE `products_in_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -358,11 +388,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cache`
+--
+ALTER TABLE `cache`
+  ADD CONSTRAINT `product_to_cache` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cart`
