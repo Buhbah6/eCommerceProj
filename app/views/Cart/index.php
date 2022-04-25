@@ -35,7 +35,7 @@
                     <a href='/Cart/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
                     <a href='/Cart/removeFromCart/$product->product_id' class='m-2' id='del'>Remove From Cart</a> </div> </div>";
                 }
-                echo "<a href='/Cart/checkout'>Proceed to Checkout</a><br>";
+                echo "<button type='button' class='btn btn-light btn-lg'><a href='/Cart/checkout'>Proceed to Checkout</a></button><br>";
             }
         ?>
         </div>
