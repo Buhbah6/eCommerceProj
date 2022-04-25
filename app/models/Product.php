@@ -87,4 +87,37 @@
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
                 return $STMT->fetchAll(); 
             }
+
+            public function sortBySeller() { 
+                $SQL = 'SELECT product.*, seller.name,seller.seller_id FROM product 
+                Inner Join seller
+                ON product.seller_id = seller.seller_id
+                Order By seller.name asc';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+                return $STMT->fetchAll(); 
+            }
+
+            public function sortByCategory() { 
+                $SQL = 'SELECT product.*, category.category_id, category.name FROM product 
+                Inner Join category
+                ON product.category_id = category.category_id
+                Order By category.name asc';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute();
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+                return $STMT->fetchAll(); 
+            }
+
+            // public function getAllByCategory($category_id){
+            //     $SQL = 'SELECT product.*, category.name FROM product 
+            //     Inner Join category
+            //     ON product.category_id = $category_id
+            //     Order By product.product_name asc';
+            //     $STMT = self::$_connection->prepare($SQL);
+            //     $STMT->execute();
+            //     $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
+            //     return $STMT->fetchAll();
+            // }
         }

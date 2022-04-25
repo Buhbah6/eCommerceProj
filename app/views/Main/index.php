@@ -9,16 +9,8 @@
     <body>
         <div class='container'>
             <?php
-                if (!isset($_SESSION['user_id']))
-                    echo "<a id='log' href='/User/login'>Login</a> | <a id='reg' href='/User/register'>Register</a>";
-                else  
-                    echo "<a href='/User/index'>My Profile</a> | <a href='/User/logout'>Logout</a>";      
-            ?>
-            <h1>Furniture Land</h1>
-            <br><br>
-            <?php
                 $this->view('Subviews/navigation');
-                $this->view('Product/list', $data);
+                $this->view('Product/subviews/list', $data);
             ?>
         </div>
     </body>

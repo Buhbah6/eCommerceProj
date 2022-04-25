@@ -8,11 +8,11 @@
             public function index($product_id) { 
                 $myReviews = new \app\models\Reviews();
                 $reviews = $myReviews->getAllReviews($product_id);
-                if(count($reviews) == 0){
-                    $this->view('Reviews/index', $product_id);
+                if(count($reviews) ==0){
+                    $this->view('Reviews/index',$product_id);
                 }
                 else{
-                    $this->view('Reviews/index', $reviews);
+                    $this->view('Reviews/index',$reviews);
                 }
             }
 

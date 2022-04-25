@@ -10,7 +10,9 @@
             <title>All Products in Wishlist</title>
     </head>
     <body>
+    <div class='container'>
         <?php
+            $this->view('subviews/navigation');
             echo "<h1 id='all'>All Products in $data->name</h1>";
         ?>
         <div>
@@ -38,8 +40,8 @@
                     <a href='/Cart/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
                     <a href='/Cart/removeFromCart/$product->product_id' class='m-2' id='del'>Remove From Cart</a> </div> </div>";
                 }
-                $this->view('Subviews/navigation');
             ?>
+        </div>
         </div>
     </body>
 </html>

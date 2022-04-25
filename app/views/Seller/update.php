@@ -8,16 +8,16 @@
     </head>
     <body>
         <div class='container'>
-
+            <?php
+                $this->view('subviews/navigation');
+            ?>
             <h1>Update your Seller Profile</h1>
             <form method='post' action=''>
                 <label class='form-label'>Name:<input type='text' name='name' class='form-control' value="<?=$data->name ?>" /></label><br>
                 <label class='form-label'>Location:<input type='text' name='location' class='form-control' value="<?=$data->location ?>" /></label><br>
                 <input type="submit" name='action' value='Update!' class='form-control' />
             </form>
-            <?php
-                $this->view('subviews/navigation');
-            ?>
+            
         </div>
     </body>
 </html>

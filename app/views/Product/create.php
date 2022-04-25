@@ -8,6 +8,9 @@
 	</head>
 	<body>
 		<div class='container'>
+			<?php
+                $this->view('subviews/navigation');
+            ?>
 
 		<h1>Add a product</h1>
 		<form method='post' action=''>

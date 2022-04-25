@@ -6,13 +6,19 @@
             public function index($product_id) {
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
-                $this->view('Product/index', $product);
+                $this->view('Product/product_detail', $product);
             }
 
             public function list() {
                 $product = new \app\models\Product();
                 $product = $product->getAll();
-                $this->view('Product/list', $product);
+                $this->view('Product/index', $product);
+            }
+
+            public function productByCategory($category_id) {
+                $product = new \app\models\Product();
+                $product = $product->getAllByCategory($category_id) ;
+                $this->view('Product/index', $product);
             }
 
             public function create() { //  remove the input after the seller is implemented
@@ -71,18 +77,45 @@
                 header("location:/Seller/index/$product->seller_id");
             }
 
+        
             public function sortByPrice(){
                 $product = new \app\models\Product();
                 $product = $product->sortByPrice();
 
-                $this->view('Product/list', $product);
+                $this->view('Main/index', $product);  
             }
 
             public function sortByNameAlphabetically(){
                 $product = new \app\models\Product();
                 $product = $product->sortByNameAlphabetically();
 
-                $this->view('Product/list', $product);
+                $this->view('Main/index', $product);
+            }
+
+            public function sortBySeller(){
+                $product = new \app\models\Product();
+                $sellers = new \app\models\Seller();
+                $sellers = $sellers->getAll();
+                $products = [];    
+
+                foreach ($sellers as $seller){
+                    array_push($products, $product->getAllBySeller($seller->seller_id)) ;
+                }   
+               
+                $this->view('Product/sortBySeller', array($sellers,$products));
+            }
+
+            public function sortByCategory(){
+                $product = new \app\models\Product();
+                $categories = new \app\models\Category();
+                $categories = $categories->getAll();
+                $products = [];    
+
+                foreach ($categories as $category){
+                    array_push($products, $product->getAllByCategory($category->category_id)) ;
+                }   
+               
+                $this->view('Product/sortByCategory', array($categories,$products));
             }
     }
         

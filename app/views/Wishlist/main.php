@@ -10,7 +10,11 @@
             <title>Your wishlists</title>
     </head>
     <body>
-        <div>
+        <div class='container'>
+            <?php
+                $this->view('Subviews/navigation');
+	        ?>
+            <div>
             <h1>All Wishlists</h1>
             <br><a href="/Wishlist/create">Create a new Wishlist</a><br>
             <ul>
@@ -20,9 +24,10 @@
                             echo "<li><a href=/Wishlist/index/$wishlist->wishlist_id>$wishlist->name</a></li><br>";
                         }
                     }
-                    $this->view('Subviews/navigation');
+       
                 ?>
             </ul>
+            </div>
         </div>
     </body>
 </html>

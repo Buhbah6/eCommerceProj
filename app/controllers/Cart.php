@@ -29,7 +29,7 @@
                 if ($cart->getProductInCart($product_id) != null) {
                     $quantity = $cart->getQuantityByProductId($product_id);
                     $quantity = $quantity[0] + 1;
-                    $this->modifyQuantity($product_id, $quantity);
+                    $this->modifyQtyModel($product_id, $quantity);
                 }
                 else {
                     $cart->addToCart($product_id);
@@ -43,8 +43,21 @@
                 $this->index(); 
             }
 
-            public function modifyQuantity($product_id, $quantity) {
+            public function modifyQuantity($product_id) {
                 $cart = new \app\models\Cart();
-                $cart->modifyQuantity($product_id, $quantity);  
+                $product = new \app\models\Product();
+                $product = $product->get($product_id);
+                if(!isset($_POST['change'])){
+                    $this->view('Cart/update', $product);
+                }else{
+                    $cart->modifyQuantity($product_id, $_POST['qty']);  
+                    $this->index(); 
+                }
+            }
+
+            public function modifyQtyModel($product_id, $quantity){
+                $cart = new \app\models\Cart();
+                $cart->modifyQuantity($product_id, $quantity); 
+
             }
         }

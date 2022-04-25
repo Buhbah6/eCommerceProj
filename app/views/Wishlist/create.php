@@ -8,6 +8,9 @@
 	</head>
 	<body>
 		<div class='container'>
+		<?php
+                $this->view('subviews/navigation');
+            ?>
 
 		<h1>Create a Wishlist</h1>
 		<form method='post' action=''>
@@ -15,9 +18,6 @@
 			<label class='form-label'>Description:<textarea name='description' cols="80" class='form-control'></textarea></label><br>
 			<input type="submit" name='action' value='Create!' class='form-control' />
 		</form>
-			<?php
-				$this->view('Subviews/navigation');
-			?>
 		</div>
 	</body>
 </html>

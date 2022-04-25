@@ -10,6 +10,10 @@
 			<title>All Sellers</title>
 	</head>
 	<body>
+		<div class='container'>
+			<?php
+				$this->view('Subviews/navigation');
+			?>
 		<div class='products'>
 
 		<h1 id='all'>Sellers</h1>
@@ -20,11 +24,12 @@
 				<div class='card-body'>
 				<b>$seller->name</b> <br>
 				Location: $seller->location <br>
-				<a href='/Seller/index/$seller->seller_id'>View Seller Page</a> <br> <br>";
+				<a href='/Seller/index/$seller->seller_id'>View Seller Page</a> <br> <br>
+				</div>";
 
         	}
-        	$this->view('Subviews/navigation');
         ?>
+		</div>
 		</div>
 	</body>
 </html>

@@ -10,6 +10,10 @@
             <title>All Products in Cart</title>
     </head>
     <body>
+    <div class='container'>
+			<?php
+				$this->view('Subviews/navigation');
+			?>
         <div class='products'>
 
         <h1 id='all'>All Products in Cart</h1>
@@ -32,8 +36,8 @@
                     <a href='/Cart/removeFromCart/$product->product_id' class='m-2' id='del'>Remove From Cart</a> </div> </div>";
                 }
             }
-            $this->view('Subviews/navigation');
         ?>
+        </div>
         </div>
     </body>
 </html>

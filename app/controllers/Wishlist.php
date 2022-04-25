@@ -33,6 +33,7 @@
             public function addToWishlist($product_id) {
                 $list = new \app\models\Wishlist();
                 if ($list->getProductInWishlist($product_id) != null) {
+                    var_dump($list);
                     $quantity = $list->getQuantityByProductId($product_id);
                     $quantity = $quantity[0] + 1;
                     $this->modifyQuantity($product_id, $quantity);

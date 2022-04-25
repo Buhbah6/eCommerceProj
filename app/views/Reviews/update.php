@@ -8,6 +8,9 @@
     </head>
     <body>
         <div class='container'>
+        <?php
+				$this->view('Subviews/navigation');
+			?>
 
             <h3>Update Review</h3>
             <form method='post' action=''>

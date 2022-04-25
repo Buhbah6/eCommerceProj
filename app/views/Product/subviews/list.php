@@ -11,40 +11,39 @@
 	</head>
 	<body>
 		<div class='products'>
-
 		<h1 id='all'>Products</h1>
 
 		<a href='/Product/sortByPrice' class='m-2' id='upd'>sort by Price</a>
 		<a href='/Product/sortByNameAlphabetically' class='m-2' id='upd'>sort by Alphabetically</a>
-
-
-		
+		<a href='/Product/sortBySeller' class='m-2' id='upd'>sort by Seller</a>
+		<a href='/Product/sortByCategory' class='m-2' id='upd'>sort by Catagory</a>
 		<?php
 			$seller = new \app\models\Seller();
           	foreach($data as $product){
 	          	$currentSeller = $seller->get($product->seller_id);
 				echo "<div class='card m-2'>
-				<div class='card-body'>
-				<b><a href='/Product/index/$product->product_id'>$product->product_name</a></b> <br>
-				Price: $$product->price <br>
-				Description: $product->description <br>
-				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
+						<div class='card-body'><b>
+						<a href='/Product/index/$product->product_id'>$product->product_name</a></b> <br>
+						Price: $$product->price <br>
+						Description: $product->description <br>
+						Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
 
 				if (isset($_SESSION['seller_id']) && $product->seller_id == $_SESSION['seller_id']) {
 				echo "<a href='/Product/update/$product->product_id' class='m-2' id='upd'>Update</a>
 	                    <a href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' 
-						class='m-2' id='del'>Delete</a> </div> </div>";
+						class='m-2' id='del'>Delete</a> 
+						</div> 
+						</div>";
 				}
 				else {
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a> <br> </div> </div>";
-
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> </div> </div>";
+					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a>  <br>";
+					echo "<a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a>| <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> 
+					</div> 
+					</div>";
 					// $reviews = new \app\models\Reviews();
 
 				}
-        }
-        $this->view('Subviews/navigation');
-	
+        	}	
         ?>
 		</div>
 	</body>

@@ -8,6 +8,9 @@
 	</head>
 	<body>
 		<div class='container'>
+            <?php
+                $this->view('subviews/navigation');
+            ?>
 
 		<h1>Update a product</h1>
         
