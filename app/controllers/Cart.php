@@ -61,6 +61,27 @@
             }
 
             public function checkout() {
-                $this->view('Cart/checkout');
+                $sale = new \app\models\Sale();
+                $cart = new \app\models\Cart();
+                $product = new \app\models\Product();
+                $ids = $cart->getAllProductsInCart();
+                $products = [];
+                foreach ($ids as $id) {
+                    $product = $product->get($id[0]);
+                    $products[] = $product;
+                }
+                
+                if (!isset($_POST['action'])) {
+                    $this->view('Cart/checkout');
+                }
+                else {
+                    foreach ($products as $productInCart) {
+                        $quantity = $cart->getQuantityByProductId($productInCart->product_id);
+                        $sale->insert($productInCart->seller_id, $_SESSION['user_id'], $productInCart->product_id, $quantity[0]);
+                        $cart->removeFromCart($productInCart->product_id);
+                    }
+                    header('location:/User/purchasehistory');
+                }
+
             }
         }

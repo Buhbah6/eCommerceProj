@@ -18,7 +18,8 @@
                     echo "<a href='/Seller/update'>Update Seller Information</a><br>";
                     echo "<a href='/Seller/delete' onclick='return confirm(\"Are you sure?\");' 
                         class='m-2' id='del'>Delete Seller Page and all Products</a><br>";
-                    echo "<a href='/Product/create'>Add Product</a><br><br><br>";
+                    echo "<a href='/Product/create'>Add Product</a><br>";
+                    echo "<a href='/Seller/salehistory'>View Sale History</a><br><br><br>";
                 }
                 echo "<h1 style= 'text-align: center;'>" . $data->name . "</h1>";
                 $this->view('Product/subviews/list', $data->getAllProducts());

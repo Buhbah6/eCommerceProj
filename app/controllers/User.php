@@ -106,4 +106,10 @@
                     $this->view('Main/twofasetup', $url);
                 }
             }
+
+            public function purchasehistory() {
+                $sale = new \app\models\Sale();
+                $allPurchases = $sale->getByUserId($_SESSION['user_id']);
+                $this->view('User/purchasehistory', $allPurchases);
+            }
         }

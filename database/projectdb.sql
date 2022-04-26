@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2022 at 10:22 AM
+-- Generation Time: Apr 26, 2022 at 02:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -132,12 +132,9 @@ CREATE TABLE `products_in_cart` (
 --
 
 INSERT INTO `products_in_cart` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
-(1, 2, 1, 1),
-(2, 2, 2, 1),
 (5, 3, 1, 1),
 (6, 3, 2, 1),
-(7, 3, 3, 1),
-(11, 1, 3, 10);
+(7, 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -183,8 +180,20 @@ CREATE TABLE `sale` (
   `seller_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`sale_id`, `seller_id`, `user_id`, `product_id`, `quantity`, `timestamp`) VALUES
+(6, 1, 2, 1, 10, '2022-04-26 00:18:29'),
+(7, 1, 2, 2, 15, '2022-04-26 00:18:29'),
+(8, 1, 2, 5, 1, '2022-04-26 00:18:29'),
+(9, 2, 1, 3, 20, '2022-04-26 00:21:01'),
+(10, 2, 1, 3, 11, '2022-04-26 00:22:34');
 
 -- --------------------------------------------------------
 
@@ -338,7 +347,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -356,7 +365,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `products_in_cart`
 --
 ALTER TABLE `products_in_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products_in_wishlist`
@@ -368,13 +377,13 @@ ALTER TABLE `products_in_wishlist`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `seller`
@@ -386,7 +395,7 @@ ALTER TABLE `seller`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

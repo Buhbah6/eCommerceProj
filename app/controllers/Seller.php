@@ -58,4 +58,10 @@
                 $sellers = $sellerObj->getAll();
                 $this->view('Seller/list', $sellers);
             }
+
+            public function salehistory() {
+                $sale = new \app\models\Sale();
+                $allSales = $sale->getBySellerId($_SESSION['seller_id']);
+                $this->view('Seller/salehistory', $allSales);
+            }
         }

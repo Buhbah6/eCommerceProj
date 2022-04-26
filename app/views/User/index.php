@@ -12,10 +12,8 @@
             $this->view('Subviews/navigation');
 
             echo "<br><br><h1>Welcome " . $_SESSION['username'] . "</h1>";
-                echo "<a href='/User/logout'>Logout</a> &emsp; &emsp; &emsp; &emsp; <a id='log'href='/User/update'>Modify Account</a> | <a class='home'href='/Main/index'>Home Page</a><br>";
-                
-                
-                echo "<a href='/Wishlist/main'>Create/View Wishlists</a>"
+                echo "<a id='log'href='/User/update'>Modify Account</a> | <a href='/Wishlist/main'>Create/View Wishlists</a> <br>";
+                echo "<a id='log'href='/User/purchasehistory'>View Purchase History</a>";
             ?>
         </div>
     </body>

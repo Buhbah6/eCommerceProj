@@ -16,7 +16,7 @@
 		<a href='/Product/sortByPrice' class='m-2' id='upd'>sort by Price</a>
 		<a href='/Product/sortByNameAlphabetically' class='m-2' id='upd'>sort by Alphabetically</a>
 		<a href='/Product/sortBySeller' class='m-2' id='upd'>sort by Seller</a>
-		<a href='/Product/sortByCategory' class='m-2' id='upd'>sort by Catagory</a>
+		<a href='/Product/sortB yCategory' class='m-2' id='upd'>sort by Catagory</a>
 		<?php
 			$seller = new \app\models\Seller();
           	foreach($data as $product){

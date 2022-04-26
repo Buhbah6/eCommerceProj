@@ -22,6 +22,7 @@
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Product");
                 return $STMT->fetchAll();
             }
+            
             function getAll() {
                 $SQL = 'SELECT * FROM product';
                 $STMT = self::$_connection->prepare($SQL);

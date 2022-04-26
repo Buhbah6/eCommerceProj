@@ -12,7 +12,7 @@
             <?php 
                 $this->view('Subviews/navigation');
             ?>
-		    <h1>CheckOut</h1>
+		    <h1>Checkout</h1>
             <p>Enter Payment Information Below</p>
             <div class="container col-8 my-5 br-2 rounded">
         <div class="row g-3">
@@ -42,7 +42,7 @@
             </div>
             <div class="col-8">
                 <h4>Billing Address</h4>
-                <form>
+                <form method='post' action=''>
                     <div class="row">
                         <div class="col-6">
                             <label class="form-label" for="firstname">First Name</label>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Pay!</button>
+                    <button type="submit" name="action" class="btn btn-primary btn-block mb-4">Pay!</button>
                 </form>
             </div>
         </div>
