@@ -15,7 +15,7 @@
                 else {
                     $user = new \app\models\User();
                     $user = $user->getByUsername($_POST['username']);
-                    if ($user) 
+                    if ($user) {
                         if(password_verify($_POST['password'], $user->password_hash)) {
                             $_SESSION['username'] = $user->username;
                             $_SESSION['user_id'] = $user->user_id;
@@ -25,10 +25,15 @@
                             $cart = $cart->getByUserId($user->user_id);
                             $_SESSION['seller_id'] = $sellerProfile->seller_id;
                             $_SESSION['cart_id'] = $cart->cart_id;
-                            header('location:/Main/index');
-                        } 
+                        }
                         else
                             $this->view('User/login','Incorrect username/password combination.');
+
+                        if ($user->secret_key != null)
+                            header('location:/User/validate2fa');
+                        else
+                            header('location:/User/setup2fa'); 
+                    }
                     else
                         $this->view('User/login','Incorrect username/password combination.');
                 }
@@ -46,12 +51,7 @@
                         $newUser->email = $_POST['email'];
                         $newUser->contact = $_POST['contact'];
                         $newUser->insert();
-                        $newUser = $newUser->getByUsername($newUser->username);
-                        $_SESSION['user_id'] = $newUser->user_id;
-                        $_SESSION['username'] = $newUser->username;
-                        $cart = new \app\controllers\Cart();
-                        $cart->create();
-                        header('location:/Main/index');
+                        $this->login();
                     }
                     else 
                         $this->view('User/register','The user account with that username already exists.');
@@ -85,28 +85,56 @@
                 $data = $_GET['data'];
                 \QRcode::png($data);
             }
-
-            #[\app\filters\Login]
-            public function setup2fa(){
-                if(isset($_POST['action'])){
+        
+            public function setup2fa() {
+                if (isset($_POST['2fa'])) {
                     $currentcode = $_POST['currentCode'];
-                    if(\app\core\TokenAuth6238::verify($_SESSION['secretkey'],$currentcode)){
+                    if (\App\core\TokenAuth6238::verify($_SESSION['secretkey'], $currentcode)) {
+                        //the user has verified their proper 2-factor authentication setup
                         $user = new \App\models\User();
-                        $user->user_id = $_SESSION['user_id'];
+                        $user = $user->get($_SESSION['user_id']);
                         $user->secret_key = $_SESSION['secretkey'];
                         $user->update2fa();
-                        header('location:'.BASE.'/Somewhere***');
-                    }else{
-                        header('location:'.BASE.'/Main/setup2fa?error=token not verified!');//reload
+                        header('location:/User/index/' . $_SESSION['user_id']);
                     }
-                }else{
+                    else {
+                        header('location:/User/setup2fa?error=tokennot verified!');//reload
+                    }
+                }
+                else if (isset($_POST['no_2fa'])) {
+                    $_SESSION['secretkey'] = "nope";
+                    header('location:/User/index/' . $_SESSION['user_id']);
+                }
+                else {
                     $secretkey = \app\core\TokenAuth6238::generateRandomClue();
                     $_SESSION['secretkey'] = $secretkey;
-                    $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['username'], 'Awesome.com', $secretkey, 'Awesome App');
-                    $this->view('Main/twofasetup', $url);
+                    $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['username'], 'FurnitureLand.com', $secretkey,'Furniture Land');
+                    $this->view('User/twofasetup', $url);
                 }
             }
+        
+            public function validate2FA() {
+                $user = new \App\models\User();
+                $user = $user->get($_SESSION['user_id']);
+                if ($user->secret_key != null) {
+                    if (isset($_POST['2fa'])) {
+                        $code = $_POST['code'];
+                        $secret = $user->secret_key;
+                        if (\App\core\TokenAuth6238::verify($secret, $code)) {
+                            $_SESSION['secretkey'] = $secret;
+                            header('location:/User/index/' . $_SESSION['user_id']);
+                        }
+                        else
+                            $this->view('User/validate2fa','Invalid code. Please re-enter.');
+                    }
+                    else
+                        $this->view('User/validate2fa');
+                }
+                else
+                    header('location:/User/setup2fa');  
+            }
 
+            #[\app\filters\Login]
             public function purchasehistory() {
                 $sale = new \app\models\Sale();
                 $allPurchases = $sale->getByUserId($_SESSION['user_id']);
