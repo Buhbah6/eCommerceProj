@@ -14,14 +14,14 @@
 
 		<h1>Add a product</h1>
 		<form method='post' action=''>
-			<label class='form-label'>Product Name:<input type='text' name='product_name' class='form-control' /></label><br>
-			<label class='form-label'>Quantity:<input type='text' name='available_quantity' class='form-control' /></label><br>
-			<label class='form-label'>Price<input type='text' name='price' class='form-control' /></label><br>
-			<label class='form-label'>Description:<textarea cols='55' name='description' class='form-control'>  </textarea></label><br>
+			<label class='form-label'>Product Name:<input type='text' name='product_name' class='form-control' required /></label><br>
+			<label class='form-label'>Quantity:<input type='number' min="0" name='available_quantity' class='form-control' required /></label><br>
+			<label class='form-label'>Price:<input type='text' name='price' class='form-control' required /></label><br>
+			<label class='form-label'>Description:<textarea cols='55' name='description' class='form-control' required>  </textarea></label><br>
 			<label class='form-label'>Quality:</label>
             
 
-            <input class="form-check-input" type="radio" name="quality" value="0" ><label
+            <input class="form-check-input" type="radio" name="quality" value="0" checked><label
              class="form-check-label">New</label>
              <input class="form-check-input" type="radio" name="quality" value="1" ><label
              class="form-check-label">Somewhat used</label>

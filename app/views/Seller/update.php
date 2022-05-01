@@ -13,8 +13,8 @@
             ?>
             <h1>Update your Seller Profile</h1>
             <form method='post' action=''>
-                <label class='form-label'>Name:<input type='text' name='name' class='form-control' value="<?=$data->name ?>" /></label><br>
-                <label class='form-label'>Location:<input type='text' name='location' class='form-control' value="<?=$data->location ?>" /></label><br>
+                <label class='form-label'>Name:<input type='text' name='name' class='form-control' value="<?=$data->name ?>" required /></label><br>
+                <label class='form-label'>Location:<input type='text' name='location' class='form-control' value="<?=$data->location ?>" required/></label><br>
                 <input type="submit" name='action' value='Update!' class='form-control' />
             </form>
             

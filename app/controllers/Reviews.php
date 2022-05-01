@@ -8,16 +8,12 @@
             public function index($product_id) { 
                 $myReviews = new \app\models\Reviews();
                 $reviews = $myReviews->getAllReviews($product_id);
-<<<<<<< Updated upstream
                 if(count($reviews) ==0){
                     $this->view('Reviews/index',$product_id);
                 }
                 else{
                     $this->view('Reviews/index',$reviews);
                 }
-=======
-                $this->view('Reviews/index', $reviews);
->>>>>>> Stashed changes
             }
 
             public function create($product_id) {

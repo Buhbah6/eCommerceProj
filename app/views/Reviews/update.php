@@ -24,7 +24,7 @@
                 $review_content = $review-> review_content;
 
             ?>
-                <label class='form-label'>Review:<textarea name='review_content' cols="80" class='form-control'><?= $review_content?></textarea></label><br>
+                <label class='form-label'>Review:<textarea name='review_content' cols="80" class='form-control'required><?= $review_content?></textarea></label><br>
                 <input type="submit" name='action' value='Submit Comment' class='form-control' />
             </form>
         </div>

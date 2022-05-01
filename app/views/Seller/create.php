@@ -16,9 +16,9 @@
             <p>Please enter the following information to register as a Seller</p>
             <form method='post' action=''>
                 <label>Type:<br><input type='radio' name='type' value='0'> Independent<br>
-                    <input type='radio' name='type' value='1'> Business</label><br><br>
-                <label class='form-label'>Name:<input type='text' name='name' class='form-control' /></label><br>
-                <label class='form-label'>Location:<input type='text' name='location' class='form-control' /></label><br>
+                    <input type='radio' name='type' value='1' checked> Business</label><br><br>
+                <label class='form-label'>Name:<input type='text' name='name' class='form-control' required /></label><br>
+                <label class='form-label'>Location:<input type='text' name='location' class='form-control' required /></label><br>
                 <input type="submit" name='action' value='Create!' class='form-control' />
             </form>
         </div>
