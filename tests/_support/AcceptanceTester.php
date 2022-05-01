@@ -23,20 +23,49 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * Define custom actions here
      */
-        /**
-     * @Given I am on the page :url
+
+    /**
+     * @Given I am on :url
      */
      public function iAmOnThePage($url)
      {
          $this->amOnPage($url);
      }
 
+     /**
+      * @And I am on :url
+      */
+     public function andIAmOnPage($url) {
+        $this->amOnPage($url);
+     }
+
     /**
-     * @When I input :term in the :boxname box
+     * @When I input :content in the :field box 
      */
-     public function iInputInTheBox($term, $boxname)
+     public function iInputInTheBox($content, $field)
      {
-         $this->fillField($boxname, $term);
+        $this->fillField($field, $content);
+     }
+
+     /**
+      * @And I input :content in the :field
+      */
+     public function andIInput($content, $field) {
+        $this->fillField($field, $content);
+     }
+
+     /**
+      * @Then I am redirected to :url
+      */
+     public function iAmRedirectedTo($url) {
+        $this->iAmOnThePage($url);
+     }
+
+     /**
+      * @And I am redirected to :url
+      */
+     public function andIAmRedirected($url) {
+        $this->iAmOnThePage($url);
      }
 
     /**
@@ -54,45 +83,6 @@ class AcceptanceTester extends \Codeception\Actor
      {
          $this->see($text);
      }
- /**
-     * @Given I am on the login page
-     */
-     public function iAmOnTheLoginPage()
-     {
-         $url = "http://localhost/User/login";
-         $this->amOnPage($url); 
-     }
-
-    /**
-     * @Then I see the home page with my account logged in
-     */
-     public function iSeeTheHomePageWithMyAccountLoggedIn()
-     {
-	   $url = "http://localhost/Main/index";
-	   $this->amOnPage($url);      
-     }
-	
-
-     /**
-     * @Given I am on the registration page
-     */
-     public function iAmOnTheRegistrationPage()
-     {
-         $url = "http://localhost/User/register";
-         $this->amOnPage($url);
-     }
-
-    /**
-     * @When I input :arg1 into the :arg2 box
-     */
-     public function iInputIntoTheBox($arg1, $arg2)
-     {
-	   $this->fillField("username","$arg1");
-         $this->fillField("password","$arg2");
-	   $this->fillField("password_confirm","$arg2");
-	   $this->fillField("email","$arg1" + "@yahoo.com");
-	   $this->fillField("contact","1234567");
-     }
 
     /**
      * @When I click on :arg1
@@ -102,45 +92,22 @@ class AcceptanceTester extends \Codeception\Actor
          $this->click($arg1);
      }
 
-    /**
-     * @Then I see the home page
-     */
-     public function iSeeTheHomePage()
-     {
-         $url = "http://localhost/Main/index";
-	   $this->amOnPage($url);
+     /**
+      * @And I click on :arg1
+      */
+     public function andIClickOn($arg1) {
+         $this->click($arg1);
      }
 
- 	/**
-     * @Given I am on my page
-     */
-     public function iAmOnMyPage()
-     {
-         $this->amOnPage("http://localhost/User/login");
-	   $this->fillField("username","Buhbah6");
-         $this->fillField("password","test");
-	   $this->click("action");
-         $url = "http://localhost/Main/index";
-	   $this->amOnPage($url);
+     /**
+      * @Given I am logged in as :username with password :password
+      */
+     public function amLoggedIn($username, $password) {
+        $this->amOnPage("/User/login");
+        $this->fillField("username", $username);
+        $this->fillField("password", $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click("Home Page");
      }
-
-
-	/**
-     * @When I click on the link
-     */
-     public function iClickOnTheLink()
-     {
-         $this->click("Logout");
-     }
-	
-
-    /**
-     * @Then I see the home page with the option to login
-     */
-     public function iSeeTheHomePageWithTheOptionToLogin()
-     {
-         $url = "http://localhost/Main/index";
-	   $this->amOnPage($url);
-     }
-
 }

@@ -1,0 +1,12 @@
+<br />
+<b>Warning</b>:  Undefined array key "type" in <b>C:\xampp\htdocs\app\controllers\Seller.php</b> on line <b>19</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'type' cannot be null in C:\xampp\htdocs\app\models\Seller.php:37
+Stack trace:
+#0 C:\xampp\htdocs\app\models\Seller.php(37): PDOStatement-&gt;execute(Array)
+#1 C:\xampp\htdocs\app\controllers\Seller.php(22): app\models\Seller-&gt;insert()
+#2 [internal function]: app\controllers\Seller-&gt;create()
+#3 C:\xampp\htdocs\app\core\App.php(44): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\index.php(3): app\core\App-&gt;__construct()
+#5 {main}
+  thrown in <b>C:\xampp\htdocs\app\models\Seller.php</b> on line <b>37</b><br />

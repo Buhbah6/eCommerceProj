@@ -3,9 +3,9 @@ Feature: login
   As a user
   I need to be able to provide my username and password to login
 
-  Scenario: login with username 'John123' and password 'Test'
-    Given I am on the login page
-    When I input "John123" in the "username" box
-    And I input "Test" in the "password" box
-    And I click "action"
-    Then I see the home page with my account logged in
+  Scenario: login with username 'user0' and password 'TestPass'
+    Given I am on "/User/login"
+    When I input "user0" in the "username" box
+    And I input "TestPass" in the "password" box
+    And I click on "Login!"
+    Then I am redirected to "/User/setup2fa"
