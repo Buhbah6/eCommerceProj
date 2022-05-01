@@ -9,10 +9,13 @@
     </head>
     <body>
         <div class='container'>
+<<<<<<< Updated upstream
             <?php
 				$this->view('Subviews/navigation');
 			?>
 
+=======
+>>>>>>> Stashed changes
 
             <h3>Add Review</h3>
             <form method='post' action=''>
