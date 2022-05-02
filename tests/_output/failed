@@ -4,6 +4,5 @@ tests\acceptance\17remove_from_wishlist.feature:Remove Fridges from "myList"
 tests\acceptance\22delete_wishlist.feature:try deleting wishlist correctly
 tests\acceptance\23add_review.feature:try reviewing "Fridge"
 tests\acceptance\24modify_review.feature:try modifying a review
-tests\acceptance\25delete_review.feature:try deleting a review
 tests\acceptance\29sort_by_category.feature:try sorting by category
 tests\acceptance\7create_wishlist.feature:try creating wishlist correctly

@@ -45,39 +45,39 @@
                 <form method='post' action=''>
                     <div class="row">
                         <div class="col-6">
-                            <label class="form-label" for="firstname"><?= _("First Name") ?></label>
-                            <input type="text" id="firstname" class="form-control">
+                            <label class="form-label" for="firstname" required><?= _("First Name") ?></label>
+                            <input type="text" id="firstname" class="form-control" required>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="lastname"><?= _("Middle name") ?><span class="text-muted"><?= _("(Optional)")?></span></label>
-                            <input type="text" id="lastname" class="form-control">
+                            <label class="form-label" for="lastname" required><?= _("Middle name") ?><span class="text-muted"><?= _("(Optional)")?></span></label>
+                            <input type="text" id="lastname" class="form-control" required>
                         </div>
                         <div class="col-12">
-                            <label class="from-label" for="username"><?= _("Last Name") ?></label>
+                            <label class="from-label" for="username" required><?= _("Last Name") ?></label>
                             <div class="input-group">
                                 
                                 <input type="text" class="form-control" id="usrname">
                             </div>
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="email"><?= _("Email") ?>
+                            <label class="form-label" for="email" required><?= _("Email") ?>
                                 <span class="text-muted"><?= _("(Optional)") ?></span>
                             </label>
-                            <input type="text" id="email" class="form-control">
+                            <input type="text" id="email" class="form-control" required>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="address"><?= _("Address") ?> </label>
-                            <input type="text" id="address" class="form-control">
+                            <input type="text" id="address" class="form-control" required>
                         </div>
                         <div class="col-5">
-                            <label class="form-label" for="country"><?= _("Country") ?> </label>
+                            <label class="form-label" for="country" required><?= _("Country") ?> </label>
                             <select class="form-select" id="country">
                                 <option><?= _("Choose") ?></option>
                                 <option><?= _("Canada") ?></option>
                             </select>
                         </div>
                         <div class="col-4">
-                            <label class="form-label" for="state"><?= _("Province") ?></label>
+                            <label class="form-label" for="state" required><?= _("Province") ?></label>
                             <select class="form-select" id="state">
                                 <option><?= _("Choose") ?></option>
                                 <option><?= _("Quebec") ?></option>
@@ -85,39 +85,39 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <label class="form-label" for="zip"><?= _("Zip") ?> </label>
+                            <label class="form-label" for="zip" required><?= _("Zip") ?> </label>
                             <input type="text" id="zip" class="form-control">
                         </div>
                     </div>
                     <hr>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-check-input" required>
                         <label class="form-check-label"><?= _("Shipping address is the same as my billing address") ?></label>
                     </div>
                     <hr>
                     <h4><?= _("Payment")?></h4>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-check-input" required>
                         <label input class="form-check-label" style:text-align:left><?= _("Credit Card") ?></label>
                     </div>
                     
                     <div class="row">
                         <div class="col-6">
                             <label class="form-label" for="cardname"><?= _("Name on the card") ?> </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" required>
                             <small class="text-muted"><?= _("Full name as displayed on card") ?></small>
                         </div>
                         <div class="col-6">
                             <label class="form-label" for="creditcard"><?= _("Credit Card Number") ?> </label>
-                            <input type="text"  class="form-control">
+                            <input type="text"  class="form-control" required>
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="expiration"><?= _("Expiration") ?> </label>
-                            <input type="text" id="expiration" class="form-control">
+                            <input type="text" id="expiration" class="form-control" required>
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="cvv"><?= _("CVV") ?> </label>
-                            <input type="text" id="cvv" class="form-control">
+                            <input type="text" id="cvv" class="form-control" required>
                         </div>
                     </div>
                     <hr>

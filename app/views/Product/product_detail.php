@@ -32,8 +32,10 @@
 						class='m-2' id='del'>".("Delete")."</a> </div> </div>";
 				}
 				else {
-					echo "<a href='/Cart/addToCart/$data->product_id'>". _("Add to Cart")."</a> | <a href='/Wishlist/select/$data->product_id'>". _("Add to a Wishlist")."</a> <br> </div> </div>";
+					echo "<a href='/Cart/addToCart/$data->product_id'>". _("Add to Cart")."</a> | <a href='/Wishlist/select/$data->product_id'>". _("Add to a Wishlist")."</a> | <a href='/Reviews/index/$data->product_id'>Review</a><br> </div> </div><br> </div> </div>";
 				}
+
+			
         	?>
 		</div>
 		</div>
