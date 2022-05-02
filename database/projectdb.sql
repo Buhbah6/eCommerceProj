@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2022 at 02:33 PM
+-- Generation Time: Apr 26, 2022 at 02:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -31,6 +31,13 @@ CREATE TABLE `cache` (
   `cached_id` int(11) DEFAULT NULL,
   `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`cached_id`, `type`) VALUES
+(16, 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +111,8 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`product_id`, `product_name`, `category_id`, `seller_id`, `available_quantity`, `price`, `description`, `quality`) VALUES
 (1, 'Fridge', 1, 1, 5, 10, '  Refrigerator', 0),
 (2, 'Couch', 2, 1, 10, 15, '  Couch for Living Room', 1),
-(3, 'Garden Fence', 8, 2, 15, 20, '  Fence for the garden', 0);
+(3, 'Garden Fence', 8, 2, 15, 20, '  Fence for the garden', 0),
+(5, 'bed', 4, 1, 300, 15, '  Bed', 0);
 
 -- --------------------------------------------------------
 
@@ -119,6 +127,15 @@ CREATE TABLE `products_in_cart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `products_in_cart`
+--
+
+INSERT INTO `products_in_cart` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
+(5, 3, 1, 1),
+(6, 3, 2, 1),
+(7, 3, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -131,6 +148,13 @@ CREATE TABLE `products_in_wishlist` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products_in_wishlist`
+--
+
+INSERT INTO `products_in_wishlist` (`id`, `wishlist_id`, `product_id`, `quantity`) VALUES
+(61, 16, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -159,6 +183,17 @@ CREATE TABLE `sale` (
   `quantity` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`sale_id`, `seller_id`, `user_id`, `product_id`, `quantity`, `timestamp`) VALUES
+(6, 1, 2, 1, 10, '2022-04-26 00:18:29'),
+(7, 1, 2, 2, 15, '2022-04-26 00:18:29'),
+(8, 1, 2, 5, 1, '2022-04-26 00:18:29'),
+(9, 2, 1, 3, 20, '2022-04-26 00:21:01'),
+(10, 2, 1, 3, 11, '2022-04-26 00:22:34');
 
 -- --------------------------------------------------------
 
@@ -193,18 +228,17 @@ CREATE TABLE `user` (
   `username` varchar(40) NOT NULL,
   `password_hash` varchar(63) NOT NULL,
   `email` varchar(60) NOT NULL,
-  `contact` char(10) NOT NULL,
-  `secret_key` varchar(32) DEFAULT NULL
+  `contact` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`, `secret_key`) VALUES
-(1, 'user1', '$2y$10$uxRowWTaz0cIStyYGykl/uB.LqIRbYCy./WAF8cYNJpzX2n.aL5I.', 'test@eCom.ca', '1234567891', NULL),
-(2, 'user2', '$2y$10$.QTiMXqdLKZKXD9dPx1bKu9Dcv55r98Oowb21xZa1bQVjNnYBG0OS', 'test@gmail.com', '1234567891', NULL),
-(3, 'user3', '$2y$10$iV60p7pLu2oEowW6vxodju/oCzsIE0vp1LWb1smSjgLVMVEr/lzSm', 'test@outlook.ca', '1234567891', NULL);
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `contact`) VALUES
+(1, 'user1', '$2y$10$uxRowWTaz0cIStyYGykl/uB.LqIRbYCy./WAF8cYNJpzX2n.aL5I.', 'test@eCom.ca', '1234567891'),
+(2, 'user2', '$2y$10$.QTiMXqdLKZKXD9dPx1bKu9Dcv55r98Oowb21xZa1bQVjNnYBG0OS', 'test@gmail.com', '1234567891'),
+(3, 'user3', '$2y$10$iV60p7pLu2oEowW6vxodju/oCzsIE0vp1LWb1smSjgLVMVEr/lzSm', 'test@outlook.ca', '1234567891');
 
 -- --------------------------------------------------------
 
@@ -218,6 +252,14 @@ CREATE TABLE `wishlist` (
   `name` text NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `name`, `description`) VALUES
+(16, 1, 'School', 'school stuff'),
+(17, 2, 'Test', 'Test');
 
 --
 -- Indexes for dumped tables
@@ -305,7 +347,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -317,49 +359,49 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products_in_cart`
 --
 ALTER TABLE `products_in_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products_in_wishlist`
 --
 ALTER TABLE `products_in_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

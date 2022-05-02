@@ -5,7 +5,7 @@
             <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         
-        <title>Add review</title>
+        <title><?= _("Add review") ?></title>
     </head>
     <body>
         <div class='container'>
@@ -13,9 +13,10 @@
 				$this->view('Subviews/navigation');
 			?>
 
-            <h3>Add Review</h3>
+
+            <h3><?= _("Add review") ?></h3>
             <form method='post' action=''>
-                <label class='form-label'>Review:<textarea name='review_content' cols="80" class='form-control'></textarea></label><br>
+                <label class='form-label'><?= _("Review:") ?><textarea name='review_content' cols="80" class='form-control' required></textarea></label><br>
                 <input type="submit" name='action' value='Submit Comment' class='form-control' />
             </form>
         </div>

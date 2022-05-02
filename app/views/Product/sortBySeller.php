@@ -7,7 +7,7 @@
 		
 		<!-- JavaScript Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-			<title>Catalog</title>
+			<title><?= _("Category") ?></title>
 	</head>
 	<body>
 	    <div class="container">
@@ -16,11 +16,11 @@
             ?>
 		    <div class='products'>
 
-            <h1 id='all'>Products</h1>
-            <a href='/Product/sortByPrice' class='m-2' id='upd'>sort by Price</a>
-		    <a href='/Product/sortByNameAlphabetically' class='m-2' id='upd'>sort by Alphabetically</a>
-		    <a href='/Product/sortBySeller' class='m-2' id='upd'>sort by Seller</a>
-		    <a href='/Product/sortByCategory' class='m-2' id='upd'>sort by Category</a>
+            <h1 id='all'><?= _("Products") ?></h1>
+            <a href='/Product/sortByPrice' class='m-2' id='upd'><?= _("sort by Price") ?></a>
+		    <a href='/Product/sortByNameAlphabetically' class='m-2' id='upd'><?= _("sort Alphabetically") ?></a>
+		    <a href='/Product/sortBySeller' class='m-2' id='upd'><?= _("sort by Seller") ?></a>
+		    <a href='/Product/sortByCategory' class='m-2' id='upd'><?= _("sort by Category") ?></a>
 		    <?php
                 foreach($data[0] as $seller){
                     echo "<div class='card m-2'>

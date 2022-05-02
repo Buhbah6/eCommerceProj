@@ -43,6 +43,7 @@
 
 
             public function getUser($user_id) {
+                
                 $SQL = 'SELECT * FROM user WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$user_id]);
@@ -50,7 +51,7 @@
                 return $STMT->fetch(); 
             }
 
-            public function insert() { 
+            public function insert() { //fix this and subsequent calls
                 $SQL = 'INSERT INTO review(user_id, product_id, review_content) 
                 VALUES(:user_id, :product_id, :review_content)';
                 $STMT = self::$_connection->prepare($SQL);
