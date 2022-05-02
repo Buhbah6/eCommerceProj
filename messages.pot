@@ -1,0 +1,657 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-26 01:52-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/views/Cart/index.php:10 app/views/Cart/index.php:19
+msgid "All Products in Cart"
+msgstr ""
+
+#: app/views/Category/index.php:8 app/views/Main/index.php:7
+#: app/views/Subviews/navigation.php:8
+msgid "Home page"
+msgstr ""
+
+#: app/views/Category/index.php:16
+msgid "All Category"
+msgstr ""
+
+#: app/views/Product/index.php:9 app/views/Product/product_detail.php:10
+#: app/views/Product/subviews/list.php:10
+msgid "All Products"
+msgstr ""
+
+#: app/views/Reviews/index.php:7 app/views/Reviews/index.php:14
+msgid "Reviews"
+msgstr ""
+
+#: app/views/Seller/index.php:9
+msgid "Seller Profile"
+msgstr ""
+
+#: app/views/User/index.php:7
+msgid "Profile"
+msgstr ""
+
+#: app/views/Wishlist/index.php:10
+msgid "All Products in Wishlist"
+msgstr ""
+
+#: app/views/Cart/checkout.php:8 app/views/Cart/checkout.php:15
+msgid "CheckOut"
+msgstr ""
+
+#: app/views/Cart/checkout.php:16
+msgid "Enter Payment Information Below"
+msgstr ""
+
+#: app/views/Cart/checkout.php:28
+msgid "Private Information is protected"
+msgstr ""
+
+#: app/views/Cart/checkout.php:34
+msgid "Reminder"
+msgstr ""
+
+#: app/views/Cart/checkout.php:35
+msgid "Verify information inputted into Payment"
+msgstr ""
+
+#: app/views/Cart/checkout.php:44
+msgid "Billing Address"
+msgstr ""
+
+#: app/views/Cart/checkout.php:48
+msgid "First Name"
+msgstr ""
+
+#: app/views/Cart/checkout.php:52
+msgid "Middle name"
+msgstr ""
+
+#: app/views/Cart/checkout.php:56
+msgid "Last Name"
+msgstr ""
+
+#: app/views/Cart/checkout.php:63 app/views/User/register.php:15
+#: app/views/User/update.php:16
+msgid "Email"
+msgstr ""
+
+#: app/views/Cart/checkout.php:64 app/views/Cart/checkout.php:52
+msgid "(Optional)"
+msgstr ""
+
+#: app/views/Cart/checkout.php:69
+msgid "Address"
+msgstr ""
+
+#: app/views/Cart/checkout.php:73
+msgid "Country"
+msgstr ""
+
+#: app/views/Cart/checkout.php:75 app/views/Cart/checkout.php:82
+msgid "Choose"
+msgstr ""
+
+#: app/views/Cart/checkout.php:76
+msgid "Canada"
+msgstr ""
+
+#: app/views/Cart/checkout.php:83
+msgid "Quebec"
+msgstr ""
+
+#: app/views/Cart/checkout.php:84
+msgid "Ontario"
+msgstr ""
+
+#: app/views/Cart/checkout.php:88
+msgid "Zip"
+msgstr ""
+
+#: app/views/Cart/checkout.php:95
+msgid "Shipping address is the same as my billing address"
+msgstr ""
+
+#: app/views/Cart/checkout.php:101
+msgid "Credit Card"
+msgstr ""
+
+#: app/views/Cart/checkout.php:106
+msgid "Name on the card"
+msgstr ""
+
+#: app/views/Cart/checkout.php:108
+msgid "Full name as displayed on card"
+msgstr ""
+
+#: app/views/Cart/checkout.php:111
+msgid "Credit Card Number"
+msgstr ""
+
+#: app/views/Cart/checkout.php:115
+msgid "Expiration"
+msgstr ""
+
+#: app/views/Cart/checkout.php:119
+msgid "CVV"
+msgstr ""
+
+#: app/views/Cart/checkout.php:124
+msgid "Pay!"
+msgstr ""
+
+#: app/views/Cart/update.php:10 app/views/Wishlist/update.php:10
+#: app/views/Product/product_detail.php:30
+#: app/views/Product/subviews/list.php:32
+#: app/views/Product/subviews/sortBy.php:22 app/views/Wishlist/update.php:10
+msgid "Update"
+msgstr ""
+
+#: app/views/Cart/update.php:19 app/views/Wishlist/update.php:19
+#: app/views/Wishlist/update.php:19
+msgid "Change Quantity"
+msgstr ""
+
+#: app/views/Product/create.php:7 app/views/Product/create.php:15
+msgid "Add a product"
+msgstr ""
+
+#: app/views/Product/create.php:17 app/views/Product/update.php:18
+msgid "Product Name:"
+msgstr ""
+
+#: app/views/Product/create.php:18 app/views/Product/create.php:21
+msgid "Quantity:"
+msgstr ""
+
+#: app/views/Product/create.php:19 app/views/Product/update.php:22
+#: app/views/Cart/update.php:30 app/views/Product/subviews/list.php:27
+#: app/views/Product/subviews/sortBy.php:17 app/views/Wishlist/index.php:38
+#: app/views/Wishlist/update.php:30
+msgid "Price:"
+msgstr ""
+
+#: app/views/Product/create.php:20 app/views/Product/update.php:24
+#: app/views/Wishlist/create.php:18 app/views/Cart/index.php:32
+#: app/views/Cart/update.php:31 app/views/Product/product_detail.php:26
+#: app/views/Product/subviews/list.php:28
+#: app/views/Product/subviews/sortBy.php:18 app/views/Wishlist/index.php:39
+#: app/views/Wishlist/update.php:31
+msgid "Description:"
+msgstr ""
+
+#: app/views/Product/create.php:25 app/views/Product/update.php:30
+msgid "New"
+msgstr ""
+
+#: app/views/Product/create.php:27
+msgid "Somewhat used"
+msgstr ""
+
+#: app/views/Product/create.php:29
+msgid "Very used"
+msgstr ""
+
+#: app/views/Product/create.php:31 app/views/Product/update.php:34
+msgid "Choose a category:"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:10
+#: app/views/Product/sortBySeller.php:10
+msgid "Category"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:19
+#: app/views/Product/sortBySeller.php:19
+#: app/views/Product/subviews/list.php:14
+msgid "Products"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:20
+#: app/views/Product/sortBySeller.php:20
+#: app/views/Product/subviews/list.php:16
+msgid "sort by Price"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:21
+#: app/views/Product/sortBySeller.php:21
+msgid "sort Alphabetically"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:22
+msgid "sort by seller"
+msgstr ""
+
+#: app/views/Product/sortByCategory.php:23
+#: app/views/Product/sortBySeller.php:23
+msgid "sort by Category"
+msgstr ""
+
+#: app/views/Product/sortBySeller.php:22
+msgid "sort by Seller"
+msgstr ""
+
+#: app/views/Product/subviews/list.php:17
+msgid "sort by Alphabetically"
+msgstr ""
+
+#: app/views/Product/subviews/sortBy.php:9
+msgid "Catalog"
+msgstr ""
+
+#: app/views/Product/update.php:7
+msgid "Update Product"
+msgstr ""
+
+#: app/views/Product/update.php:15
+msgid "Update a product"
+msgstr ""
+
+#: app/views/Product/update.php:20
+msgid "Quantity"
+msgstr ""
+
+#: app/views/Product/update.php:26 app/views/Product/update.php:29
+msgid "Quality:"
+msgstr ""
+
+#: app/views/Product/update.php:31
+msgid "somewhat used"
+msgstr ""
+
+#: app/views/Product/update.php:32
+msgid "very used"
+msgstr ""
+
+#: app/views/Reviews/create.php:8 app/views/Reviews/create.php:17
+msgid "Add review"
+msgstr ""
+
+#: app/views/Reviews/create.php:19 app/views/Reviews/update.php:24
+msgid "Review:"
+msgstr ""
+
+#: app/views/Reviews/update.php:7
+msgid "Update Comment"
+msgstr ""
+
+#: app/views/Reviews/update.php:15
+msgid "Update Review"
+msgstr ""
+
+#: app/views/Search/search.php:8
+msgid "Document"
+msgstr ""
+
+#: app/views/Search/search.php:15
+msgid "Search by Product Name"
+msgstr ""
+
+#: app/views/Search/search.php:16
+msgid "Search by Seller"
+msgstr ""
+
+#: app/views/Seller/create.php:7
+msgid "Create a Seller Profile"
+msgstr ""
+
+#: app/views/Seller/create.php:15
+msgid "Create your Seller Profile"
+msgstr ""
+
+#: app/views/Seller/create.php:16
+msgid "Please enter the following information to register as a seller"
+msgstr ""
+
+#: app/views/Seller/create.php:18
+msgid "Type:"
+msgstr ""
+
+#: app/views/Seller/create.php:18
+msgid "Independent"
+msgstr ""
+
+#: app/views/Seller/create.php:19
+msgid "Business"
+msgstr ""
+
+#: app/views/Seller/create.php:20 app/views/Seller/update.php:16
+#: app/views/Wishlist/create.php:17
+msgid "Name:"
+msgstr ""
+
+#: app/views/Seller/create.php:21 app/views/Seller/update.php:17
+msgid "Location:"
+msgstr ""
+
+#: app/views/Seller/list.php:10
+msgid "All Sellers"
+msgstr ""
+
+#: app/views/Seller/list.php:19
+msgid "Sellers"
+msgstr ""
+
+#: app/views/Seller/salehistory.php:10
+msgid "All Sales"
+msgstr ""
+
+#: app/views/Seller/salehistory.php:17
+msgid "Processed Sales"
+msgstr ""
+
+#: app/views/Seller/update.php:7
+msgid "Update Seller Profile"
+msgstr ""
+
+#: app/views/Seller/update.php:14
+msgid "Update your seller profile"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:19
+msgid "Home Page"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:29
+msgid "View All Sellers"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:29
+msgid "View Cart"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:30
+msgid "View All Categories"
+msgstr ""
+
+#: app/views/Subviews/search.php:7
+msgid "Search Results"
+msgstr ""
+
+#: app/views/User/login.php:6
+msgid "User Login"
+msgstr ""
+
+#: app/views/User/login.php:11
+msgid "Login Account"
+msgstr ""
+
+#: app/views/User/login.php:15
+msgid "UserName"
+msgstr ""
+
+#: app/views/User/login.php:19 app/views/User/register.php:13
+msgid "Password"
+msgstr ""
+
+#: app/views/User/login.php:26
+msgid "No Account?"
+msgstr ""
+
+#: app/views/User/login.php:26
+msgid "Register Here!"
+msgstr ""
+
+#: app/views/User/purchasehistory.php:10
+msgid "All Purchases"
+msgstr ""
+
+#: app/views/User/purchasehistory.php:17
+msgid "Purchase History"
+msgstr ""
+
+#: app/views/User/register.php:5
+msgid "User Registration"
+msgstr ""
+
+#: app/views/User/register.php:10
+msgid "Register you user account"
+msgstr ""
+
+#: app/views/User/register.php:12 app/views/User/update.php:15
+msgid "Username"
+msgstr ""
+
+#: app/views/User/register.php:14
+msgid "Password confirmation"
+msgstr ""
+
+#: app/views/User/register.php:16 app/views/User/update.php:17
+msgid "Contact"
+msgstr ""
+
+#: app/views/User/register.php:20
+msgid "Already have an account? "
+msgstr ""
+
+#: app/views/User/register.php:20
+msgid "Login here!"
+msgstr ""
+
+#: app/views/User/update.php:8 app/views/User/update.php:13
+msgid "My Account"
+msgstr ""
+
+#: app/views/Wishlist/create.php:7 app/views/Wishlist/create.php:15
+msgid "Create a WishList"
+msgstr ""
+
+#: app/views/Wishlist/main.php:10
+msgid "Your WishList"
+msgstr ""
+
+#: app/views/Wishlist/main.php:18
+msgid "All WishList"
+msgstr ""
+
+#: app/views/Wishlist/main.php:19
+msgid "Create a new WishList"
+msgstr ""
+
+#: app/views/Wishlist/update.php:35 app/views/Wishlist/index.php:43
+#: app/views/Wishlist/update.php:35
+msgid "Remove From Wishlist"
+msgstr ""
+
+#: app/views/Cart/checkout.php:21
+msgid "Your Checkout"
+msgstr ""
+
+#: app/views/Cart/checkout.php:22
+msgid "Pay"
+msgstr ""
+
+#: app/views/Cart/checkout.php:80
+msgid "Province"
+msgstr ""
+
+#: app/views/Cart/checkout.php:98
+msgid "Payment"
+msgstr ""
+
+#: app/views/Cart/index.php:31
+msgid " Price:"
+msgstr ""
+
+#: app/views/Cart/index.php:33 app/views/Product/subviews/list.php:29
+#: app/views/Wishlist/update.php:32
+msgid "Sold By:"
+msgstr ""
+
+#: app/views/Cart/index.php:34 app/views/Cart/update.php:33
+msgid "Quantity in cart:"
+msgstr ""
+
+#: app/views/Cart/index.php:35 app/views/Wishlist/index.php:42
+msgid "Modify Quantity"
+msgstr ""
+
+#: app/views/Cart/index.php:36 app/views/Cart/update.php:35
+msgid "Remove From Cart"
+msgstr ""
+
+#: app/views/Cart/index.php:38
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: app/views/Cart/update.php:32 app/views/Product/product_detail.php:27
+#: app/views/Product/subviews/sortBy.php:19 app/views/Wishlist/index.php:40
+msgid "Sold By: "
+msgstr ""
+
+#: app/views/Product/product_detail.php:24
+msgid "Price: "
+msgstr ""
+
+#: app/views/Product/product_detail.php:25
+msgid "Available Quantity: "
+msgstr ""
+
+#: app/views/Product/product_detail.php:31
+#: app/views/Product/subviews/list.php:33
+#: app/views/Product/subviews/sortBy.php:23 app/views/Seller/index.php:19
+msgid "Are you sure"
+msgstr ""
+
+#: app/views/Product/product_detail.php:35
+#: app/views/Product/subviews/list.php:39
+#: app/views/Product/subviews/sortBy.php:28
+msgid "Add to Cart"
+msgstr ""
+
+#: app/views/Product/product_detail.php:35
+#: app/views/Product/subviews/list.php:40
+#: app/views/Product/subviews/sortBy.php:29
+msgid "Add to a Wishlist"
+msgstr ""
+
+#: app/views/Product/subviews/list.php:34
+#: app/views/Product/subviews/sortBy.php:24 app/views/Reviews/index.php:31
+msgid "Delete"
+msgstr ""
+
+#: app/views/Product/subviews/list.php:40
+#: app/views/Product/subviews/sortBy.php:29
+msgid "Review"
+msgstr ""
+
+#: app/views/Reviews/index.php:30
+msgid "Modify"
+msgstr ""
+
+#: app/views/Reviews/index.php:35
+msgid "Add a review"
+msgstr ""
+
+#: app/views/Seller/index.php:18
+msgid "Update Seller Information"
+msgstr ""
+
+#: app/views/Seller/index.php:20
+msgid "Delete Seller Page and all Products"
+msgstr ""
+
+#: app/views/Seller/index.php:21
+msgid "Add Product"
+msgstr ""
+
+#: app/views/Seller/index.php:22
+msgid "View Sale History"
+msgstr ""
+
+#: app/views/Seller/list.php:27
+msgid "View Seller Page"
+msgstr ""
+
+#: app/views/Seller/salehistory.php:27 app/views/User/purchasehistory.php:27
+msgid "Date of Purchase: "
+msgstr ""
+
+#: app/views/Seller/salehistory.php:28 app/views/User/purchasehistory.php:28
+msgid "Quantity Purchased: "
+msgstr ""
+
+#: app/views/Subviews/navigation.php:14
+msgid "Login"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:14
+msgid "Register"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:16
+msgid "My Profile"
+msgstr ""
+
+#: app/views/Subviews/navigation.php:16
+msgid "Logout"
+msgstr ""
+
+#: app/views/User/index.php:15
+msgid "Modify Account"
+msgstr ""
+
+#: app/views/User/index.php:15
+msgid "Create/View Wishlists"
+msgstr ""
+
+#: app/views/User/index.php:16
+msgid "View Purchase History"
+msgstr ""
+
+#: app/views/User/twofasetup.php:7
+msgid "2fa Set Up"
+msgstr ""
+
+#: app/views/User/twofasetup.php:10
+msgid "2 Factor Authentication Setup"
+msgstr ""
+
+#: app/views/User/twofasetup.php:12
+msgid ""
+"Please scan the QR-code on the screen with your favorite\n"
+"        Authenticator software, such as Google Authenticator. The\n"
+"        authenticator software will generate codes that are valid for 30\n"
+"        seconds only. Enter such a code while and submit it while it is\n"
+"        still valid to confirm that the 2-factor authentication can be\n"
+"        applied to your account."
+msgstr ""
+
+#: app/views/User/twofasetup.php:20
+msgid "Current code:"
+msgstr ""
+
+#: app/views/User/validate2fa.php:7 app/views/User/validate2fa.php:10
+msgid "2FA Validation"
+msgstr ""
+
+#: app/views/User/validate2fa.php:16
+msgid "Please enter your secret key to log into this application:"
+msgstr ""
+
+#: app/views/Wishlist/index.php:16
+msgid "All Products in"
+msgstr ""
+
+#: app/views/Wishlist/index.php:41
+msgid "Quantity in Wishlist:"
+msgstr ""
+
+#: app/views/Wishlist/update.php:33
+msgid "Quantity in cart: "
+msgstr ""

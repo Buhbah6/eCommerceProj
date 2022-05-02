@@ -7,14 +7,14 @@
 		
 		<!-- JavaScript Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-			<title>All Purchases</title>
+			<title><?= _("All Purchases") ?></title>
 	</head>
 	<body>
 		<?php
 			$this->view('Subviews/navigation');
 		?>
 		<div class='products'>
-		<h1 id='all'>Purchase History</h1>
+		<h1 id='all'><?= _("Purchase History") ?></h1>
 
 		<?php
 			$product = new \app\models\Product();
@@ -24,8 +24,8 @@
 				echo "<div class='card m-2'>
 						<div class='card-body'><b>
 						<a href='/Product/index/$currentProduct->product_id'>$currentProduct->product_name</a></b> <br>
-						Date of Purchase: $sale->timestamp <br>
-						Quantity Purchased: $sale->quantity<br> <br> </div></div>";
+						". _("Date of Purchase: ")."$sale->timestamp <br>
+						". _("Quantity Purchased: ")."$sale->quantity<br> <br> </div></div>";
 			}	
         ?>
 		</div>

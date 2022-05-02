@@ -7,13 +7,13 @@
         
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-            <title>All Products in Wishlist</title>
+            <title><?= _("All Products in Wishlist") ?></title>
     </head>
     <body>
     <div class='container'>
         <?php
             $this->view('subviews/navigation');
-            echo "<h1 id='all'>All Products in $data->name</h1>";
+            echo "<h1 id='all'>". _("All Products in")." $data->name</h1>";
         ?>
         <div>
             <?php
@@ -35,12 +35,12 @@
                     echo "<div class='card m-2'>
                     <div class='card-body'>
                     <b>$product->product_name</b> <br>
-                    Price: $$product->price <br>
-                    Description: $product->description <br>
-                    Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br>
-                    Quantity in Wishlist: $quantity[0] <br> <br>
-                    <a href='/Wishlist/modifyQuantity/$product->product_id' class='m-2' id='upd'>Modify Quantity</a>
-                    <a href='/Wishlist/removeFromWishlist/$product->product_id' class='m-2' id='del'>Remove From Wishlist</a> </div> </div>";
+                    ". _("Price:")." $$product->price <br>
+                    ". _("Description:")." $product->description <br>
+                    ". _("Sold By: ")."<a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br>
+                    ". _("Quantity in Wishlist:") ." $quantity[0] <br> <br>
+                    <a href='/Wishlist/modifyQuantity/$product->product_id' class='m-2' id='upd'>". _("Modify Quantity")."</a>
+                    <a href='/Wishlist/removeFromWishlist/$product->product_id' class='m-2' id='del'> ". _("Remove From Wishlist") ."</a> </div> </div>";
                 }
             ?>
         </div>

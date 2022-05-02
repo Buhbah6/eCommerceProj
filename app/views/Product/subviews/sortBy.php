@@ -6,7 +6,7 @@
 		
 		<!-- JavaScript Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-			<title>Catalog</title>
+			<title><?= _("Catalog") ?></title>
 	</head>
 	<body>
 		<?php
@@ -14,19 +14,19 @@
             $currentSeller = $seller->get($data->seller_id);
 			echo "<div class='card-body'><b>
 				<a href='/Product/index/$data->product_id'>$data->product_name</a></b> <br>
-				Price: $$data->price <br>
-				Description: $data->description <br>
-				Sold By: <a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
+				". _("Price:")." $$data->price <br>
+				". _("Description:")." $data->description <br>
+				". _("Sold By: ")."<a href='/Seller/index/$currentSeller->seller_id'>$currentSeller->name</a> <br> <br>";
 
 				if (isset($_SESSION['seller_id']) && $data->seller_id == $_SESSION['seller_id']) {
-					echo "<a href='/Product/update/$data->product_id' class='m-2' id='upd'>Update</a>
-	                <a href='/Product/delete/$data->product_id' onclick='return confirm(\"Are you sure?\");' 
-					class='m-2' id='del'>Delete</a> 
+					echo "<a href='/Product/update/$data->product_id' class='m-2' id='upd'>". _("Update")."</a>
+	                <a href='/Product/delete/$data->product_id' onclick='return confirm(". _("Are you sure") .");' ;' 
+					class='m-2' id='del'>"._("Delete")."</a> 
 					</div> 
 					";
 				}else {
-					echo "<a href='/Cart/addToCart/$data->product_id'>Add to Cart</a>  <br>";
-					echo "<a href='/Wishlist/select/$data->product_id'>Add to a Wishlist</a>| <a href='/Reviews/index/$data->product_id'>Review</a><br> <br> 
+					echo "<a href='/Cart/addToCart/$data->product_id'>". _("Add to Cart")."</a>  <br>";
+					echo "<a href='/Wishlist/select/$data->product_id'>". _("Add to a Wishlist")."</a>| <a href='/Reviews/index/$data->product_id'>" . _("Review")."</a><br> <br> 
 					</div> 
 					"; 
 				}
