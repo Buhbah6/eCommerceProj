@@ -15,7 +15,7 @@
 
             <h3>Add Review</h3>
             <form method='post' action=''>
-                <label class='form-label'>Review:<textarea name='review_content' cols="80" class='form-control' required></textarea></label><br>
+                <label class='form-label'>Review:<textarea name='review_content' cols="80" class='form-control'></textarea></label><br>
                 <input type="submit" name='action' value='Submit Comment' class='form-control' />
             </form>
         </div>

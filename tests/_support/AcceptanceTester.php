@@ -55,6 +55,21 @@ class AcceptanceTester extends \Codeception\Actor
      }
 
      /**
+      * @Given I enter :content in the :field box and I select :option
+      */
+      public function iEnterInTheSearchBar($content, $field, $option) {
+         $this->selectOption('search_type', $option);
+         $this->fillField($field, $content);
+      }
+
+      /**
+      * @Given I select :option in the :field box
+      */
+      public function iSelectOption($option, $field) {
+         $this->selectOption($field, $option);
+      }
+
+     /**
       * @Then I am redirected to :url
       */
      public function iAmRedirectedTo($url) {
@@ -82,6 +97,13 @@ class AcceptanceTester extends \Codeception\Actor
      public function iSee($text)
      {
          $this->see($text);
+     }
+
+     /**
+      * @Then I don't see :text
+      */
+     public function iDontSee($text) {
+        $this->dontSee($text);
      }
 
     /**

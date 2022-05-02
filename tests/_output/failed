@@ -1,0 +1,2 @@
+tests\acceptance\23add_review.feature:try reviewing "Fridge"
+tests\acceptance\24modify_review.feature:try modifying a review

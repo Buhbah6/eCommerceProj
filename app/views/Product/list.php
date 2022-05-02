@@ -36,21 +36,7 @@
 						class='m-2' id='del'>Delete</a> </div> </div>";
 				}
 				else {
-<<<<<<< Updated upstream
 					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Wishlist/select/$product->product_id'>Add to a Wishlist</a> <br> </div> </div>";
-
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> </div> </div>";
-					// $reviews = new \app\models\Reviews();
-
-=======
-					echo "<a href='/Cart/addToCart/$product->product_id'>Add to Cart</a> | <a href='/Reviews/index/$product->product_id'>Review</a><br> <br> </div> </div>";
-					// $reviews = new \app\models\Reviews();
-				
-     //            	$comments = $reviews->getAllReviews($product->product_id);
-                	// $this->view('Reviews/index', $comments);
-
-               
->>>>>>> Stashed changes
 				}
         }
         $this->view('Subviews/navigation');

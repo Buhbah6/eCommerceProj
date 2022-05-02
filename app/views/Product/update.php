@@ -17,7 +17,7 @@
 		<form method='post' action=''>
 			<label class='form-label'>Product Name:<input type='text' name='product_name' class='form-control' 
             value = '<?=$data[1]->product_name?>'/></label><br>
-			<label class='form-label'>Quantity:<input type='number' name='available_quantity' class='form-control'
+			<label class='form-label'>Quantity:<input type='text' name='available_quantity' class='form-control'
             value = '<?=$data[1]->available_quantity?>' /></label><br>
 			<label class='form-label'>Price<input type='text' name='price' class='form-control' 
             value = '<?=$data[1]->price?>'/></label><br>

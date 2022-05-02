@@ -22,9 +22,16 @@
                             $sellerProfile = new \app\models\Seller();
                             $sellerProfile = $sellerProfile->getByUserId($user->user_id);
                             $cart = new \app\models\Cart();
-                            $cart = $cart->getByUserId($user->user_id);
                             $_SESSION['seller_id'] = $sellerProfile->seller_id;
-                            $_SESSION['cart_id'] = $cart->cart_id;
+                            var_dump($cart->getByUserId($user->user_id));
+                            if ($cart->getByUserId($user->user_id) != null) {
+                                $cart = $cart->getByUserId($user->user_id);
+                                $_SESSION['cart_id'] = $cart->cart_id;
+                            }
+                            else {
+                                $cart = new \app\controllers\Cart();
+                                $cart->create();
+                            }
                         }
                         else
                             $this->view('User/login','Incorrect username/password combination.');
@@ -78,6 +85,8 @@
             #[\app\filters\Login]
             function logout() {
                 session_destroy();
+                $list = new \app\models\Wishlist();
+                $list->clearCache();
                 header('location:/Main/index');
             }
 
@@ -95,7 +104,7 @@
                         $user = $user->get($_SESSION['user_id']);
                         $user->secret_key = $_SESSION['secretkey'];
                         $user->update2fa();
-                        header('location:/User/index/' . $_SESSION['user_id']);
+                        $this->index();
                     }
                     else {
                         header('location:/User/setup2fa?error=tokennot verified!');//reload
@@ -103,7 +112,7 @@
                 }
                 else if (isset($_POST['no_2fa'])) {
                     $_SESSION['secretkey'] = "nope";
-                    header('location:/User/index/' . $_SESSION['user_id']);
+                    $this->index();
                 }
                 else {
                     $secretkey = \app\core\TokenAuth6238::generateRandomClue();

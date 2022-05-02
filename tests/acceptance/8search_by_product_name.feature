@@ -5,6 +5,8 @@ Feature: search_by_product_name
 
   Scenario: try search Fridge
   Given I am logged in as "user0" with password "TestPass"
-  When I input "Fridge" in the "search" box
+  When I click "View Cart"
+  And I input "Fridge" in the "search" box
+  And I click "action"
   And I click "Fridge"
   Then I am redirected to "/Product/index/1"
