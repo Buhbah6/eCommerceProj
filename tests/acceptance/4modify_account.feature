@@ -9,4 +9,8 @@ Feature: modify_account
     And I input "user10" in the "username" box
     And I click "Update!"
     And I am redirected to "/User/index"
-    Then I see "user10"
+    And I see "user10"
+    And I click "Modify Account"
+    And I input "user0" in the "username" box
+    And I click "Update!"
+    Then I see "user0"
